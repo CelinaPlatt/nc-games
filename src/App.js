@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import { useState } from 'react';
 import Header from './components/Header';
 import ReviewList from './components/ReviewList';
+import Profile from './components/Profile';
 
 function App() {
   const [user, setUser] = useState({
@@ -18,6 +19,7 @@ function App() {
       <Nav avatar={user.avatar_url} username={user.username} />
       <Header/>
       <ReviewList avatar={user.avatar_url} username={user.username} />
+      <Profile user={user}/>
     </div>
   );
 }
