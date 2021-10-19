@@ -1,0 +1,51 @@
+.reviewList {
+  width: 80vw;
+  margin: 0 auto;
+  background-color: thistle;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.reviewCard {
+  width: 50%;
+  margin: 10px auto;
+  background-color: rgb(192, 192, 192);
+  align-content: center;
+  border-radius: 10px;
+}
+
+img {
+  height: 90px;
+  width: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.reviewCard__avatar {
+  height: 25px;
+  width: auto;
+  border-radius: 25px;
+}
+
+.reviewCard__details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 7px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+button {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0);
+  border:0;
+}

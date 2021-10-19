@@ -2,6 +2,7 @@ import './App.css';
 import Nav from './components/Nav';
 import { useState } from 'react';
 import Header from './components/Header';
+import ReviewList from './components/ReviewList';
 
 function App() {
   const [user, setUser] = useState({
@@ -14,9 +15,9 @@ function App() {
 
   return (
     <div className="App">
-      <Nav avatar={user.avatar_url} />
+      <Nav avatar={user.avatar_url} username={user.username} />
       <Header/>
-      <h1>GAME CRITIC</h1>
+      <ReviewList avatar={user.avatar_url} username={user.username} />
     </div>
   );
 }
