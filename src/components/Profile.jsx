@@ -1,5 +1,6 @@
 import '../styles/Profile.css';
 import { FaEdit } from 'react-icons/fa';
+import { useParams } from 'react-router';
 
 const Profile = ({user}) => {
     const {username,name,avatar_url} = user;

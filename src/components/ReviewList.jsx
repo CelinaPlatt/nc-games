@@ -39,7 +39,7 @@ const ReviewList = () => {
       }
     }
     fetchReviews();
-  }, [category]);
+  }, [category,username]);
 
   const trimDescription = (description) => {
     let charCount = 0;
@@ -71,14 +71,18 @@ const ReviewList = () => {
                   src={avatar}
                   alt={username}
                 /> */}
-                <p>{review.owner}</p>
+
+                <Link to={`/users/${review.owner}/reviews`}>
+                  <p>{review.owner}</p>
+                </Link>
+
                 <p>{review.title}</p>
               </section>
               <p>
-                {trimDescription(review.review_body) + '...'}
+                { review_id? review.review_body : `${trimDescription(review.review_body)}...`}
                 <Link
                   to={`/reviews/${review.review_id}`}
-                  className="viewMoreLink"
+                  className={review_id? 'hidden' :'viewMoreLink'}
                 >
                   view more
                 </Link>

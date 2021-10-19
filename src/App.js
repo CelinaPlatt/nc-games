@@ -45,8 +45,12 @@ function App() {
           <Header />
           <ReviewList avatar={user.avatar_url} username={user.username} />
         </Route>
-      
-        <Route exact path="/reviews/:review_id/editor">
+
+        <Route exact path="/users/:username/reviews">
+          <ReviewList />
+        </Route>
+
+        <Route exact path="editor/reviews/:review_id">
           {/* Review */}
         </Route>
       </Switch>

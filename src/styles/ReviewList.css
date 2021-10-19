@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 .reviewList {
   width: 80vw;
   margin: 0 auto;
@@ -17,7 +21,7 @@
 }
 
 img {
-  height:auto;
+  height: auto;
   width: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
@@ -48,5 +52,5 @@ button {
   align-content: center;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0);
-  border:0;
+  border: 0;
 }
