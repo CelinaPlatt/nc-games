@@ -13,3 +13,13 @@ export const getCategories = async () => {
 
   return categories;
 };
+
+export const getCategoryDesc = async (categorySlug) => {
+  const { data } = await gamesApi.get('/categories');
+  const category = data.categories.filter((category) => {
+    return category.slug === categorySlug;
+  });
+  const categoryDesc = category[0].description;
+
+  return categoryDesc;
+};

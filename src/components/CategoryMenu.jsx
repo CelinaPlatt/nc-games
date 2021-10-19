@@ -9,6 +9,7 @@ const CategoryMenu = ({nav}) => {
   const [loading, setLoading] = useState(null);
 
 
+
   useEffect(() => {
     async function fetchCategories() {
       try {
@@ -31,7 +32,7 @@ const CategoryMenu = ({nav}) => {
   return (
     <section className={nav? "navBarMenu" : "categoriesMenu"}>
       {categories.map((category) => {
-        return <Link to={`/reviews/${category}`}>{category}</Link>;
+        return <Link to={`/reviews/${category}`}>{category.replaceAll('-',' ')}</Link>;
       })}
     </section>
   );
