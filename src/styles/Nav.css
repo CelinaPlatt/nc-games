@@ -1,0 +1,17 @@
+
+.nav {
+height: 10vh;
+background-color: rgb(201, 190, 175);
+display:flex;
+justify-content: space-around;
+}
+
+.nav__profileImg {
+    width: auto;
+    height: 50%;
+    border-radius: 25px;
+}
+
+.hidden {
+    display:none;
+}
