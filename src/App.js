@@ -5,6 +5,7 @@ import Header from './components/Header';
 import ReviewList from './components/ReviewList';
 import Profile from './components/Profile';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import CategoryMenu from './components/CategoryMenu';
 
 function App() {
   const [user, setUser] = useState({
@@ -19,7 +20,7 @@ function App() {
       <Nav avatar={user.avatar_url} username={user.username} />
       <Switch>
         <Route exact path="/">
-          {/*      CategoryMenu */}
+          <CategoryMenu />
           {/*      HomeGallery */}
         </Route>
         <Route exact path="/profile">
@@ -35,16 +36,17 @@ function App() {
         <Route exact path="/profile/editor">
           {/* Editor  formInputs ={inputs}*/}
         </Route>
-        <Route exact path="reviews/:review_id">
-          {/* Editor  formInputs ={inputs}*/}
-        </Route>
-        <Route exact path="reviews/:review_id/editor">
-          {/* Review */}
-        </Route>
-        <Route exact path="reviews/:category_id">
+        <Route exact path="/reviews/:category">
           <Header />
           <ReviewList avatar={user.avatar_url} username={user.username} />
         </Route>
+        <Route exact path="/reviews/:review_id">
+          {/* Editor  formInputs ={inputs}*/}
+        </Route>
+        <Route exact path="/reviews/:review_id/editor">
+          {/* Review */}
+        </Route>
+       
       </Switch>
     </BrowserRouter>
   );
