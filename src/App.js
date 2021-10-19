@@ -36,17 +36,19 @@ function App() {
         <Route exact path="/profile/editor">
           {/* Editor  formInputs ={inputs}*/}
         </Route>
-        <Route exact path="/reviews/:category">
+
+        <Route exact path="/reviews/:review_id">
+          <ReviewList />
+        </Route>
+
+        <Route exact path="/:category/reviews">
           <Header />
           <ReviewList avatar={user.avatar_url} username={user.username} />
         </Route>
-        <Route exact path="/reviews/:review_id">
-          {/* Editor  formInputs ={inputs}*/}
-        </Route>
+      
         <Route exact path="/reviews/:review_id/editor">
           {/* Review */}
         </Route>
-       
       </Switch>
     </BrowserRouter>
   );

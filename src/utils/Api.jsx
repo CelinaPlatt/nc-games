@@ -48,3 +48,9 @@ export const getReviewsByTitle = async (username) => {
   return userReviews;
 };
 
+export const getReviewById = async (review_id) => {
+  const { data } = await gamesApi.get(`/reviews/${review_id}`);
+  console.log(review_id,'review_id');
+  return [data.review];
+};
+

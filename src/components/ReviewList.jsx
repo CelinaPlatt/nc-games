@@ -2,15 +2,16 @@ import '../styles/ReviewList.css';
 import { FaRegHeart, FaCommentAlt } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
-import { getReviews, getReviewsByUser } from '../utils/Api';
+import { getReviewById, getReviews, getReviewsByUser } from '../utils/Api';
+import { Link } from 'react-router-dom';
 
 const ReviewList = () => {
-  const { category, username } = useParams();
+  const { category, username, review_id } = useParams();
 
   const [reviews, setReviews] = useState([]);
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(null);
-
+  console.log(useParams(), '<<review_id');
   let params = {
     sort_by: 'created_at',
   };
@@ -23,11 +24,13 @@ const ReviewList = () => {
         setErr(null);
         setLoading(true);
         let reviewsFromApi = [];
-        if(username) {
+        if (username) {
           reviewsFromApi = await getReviewsByUser(username);
-        } else{
+        } else if (review_id) {
+          reviewsFromApi = await getReviewById(review_id);
+        } else {
           reviewsFromApi = await getReviews(params);
-       }
+        }
         setReviews(reviewsFromApi);
         setLoading(false);
       } catch (err) {
@@ -38,11 +41,19 @@ const ReviewList = () => {
     fetchReviews();
   }, [category]);
 
-  const data = reviews.map((review)=>{
-    return review.owner;
-  })
-  console.log(data,'owners')
+  const trimDescription = (description) => {
+    let charCount = 0;
+    const descArr = description.split(' ');
+    const trimmedDesc = [];
+    for (let word of descArr) {
+      if (charCount < 100) {
+        charCount = charCount + word.length;
+        trimmedDesc.push(word);
+      }
+    }
 
+    return trimmedDesc.join(' ');
+  };
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
   if (err) return <p className="errMsg">{err}</p>;
@@ -63,7 +74,15 @@ const ReviewList = () => {
                 <p>{review.owner}</p>
                 <p>{review.title}</p>
               </section>
-              <p>{review.review_body}</p>
+              <p>
+                {trimDescription(review.review_body) + '...'}
+                <Link
+                  to={`/reviews/${review.review_id}`}
+                  className="viewMoreLink"
+                >
+                  view more
+                </Link>
+              </p>
             </section>
             <section className="buttons">
               <button className="likesBttn">
