@@ -23,3 +23,28 @@ export const getCategoryDesc = async (categorySlug) => {
 
   return categoryDesc;
 };
+
+export const getReviews = async (params) => {
+  const { data } = await gamesApi.get('/reviews', {
+    params: { params },
+  });
+
+  return data.reviews;
+};
+
+export const getReviewsByUser = async (username) => {
+  const { data } = await gamesApi.get('/reviews');
+  const userReviews = data.reviews.filter((review) => {
+    return review.owner === username;
+  });
+  return userReviews;
+};
+
+export const getReviewsByTitle = async (username) => {
+  const { data } = await gamesApi.get('/reviews');
+  const userReviews = data.reviews.filter((review) => {
+    return review.owner === username;
+  });
+  return userReviews;
+};
+

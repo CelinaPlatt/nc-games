@@ -24,7 +24,7 @@ const Header = () => {
       }
     }
     fetchCategoryDesc();
-  }, []);
+  }, [category]);
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
   if (err) return <p className="errMsg">{err}</p>;

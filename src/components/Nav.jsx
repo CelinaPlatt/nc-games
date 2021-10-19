@@ -9,7 +9,7 @@ const Nav = ({ avatar, username }) => {
       <a href=" ">{<FaBars className="nav__barsIcom" />}</a>
       <CategoryMenu nav={true} />
       <Link to="/">HOME</Link>
-      <Link to="/profile">
+      <Link to={`/${username}/profile`}>
         <img className="nav__profileImg" src={avatar} alt={username} />
       </Link>
     </nav>

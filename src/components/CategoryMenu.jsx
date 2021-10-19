@@ -32,7 +32,7 @@ const CategoryMenu = ({nav}) => {
   return (
     <section className={nav? "navBarMenu" : "categoriesMenu"}>
       {categories.map((category) => {
-        return <Link to={`/reviews/${category}`}>{category.replaceAll('-',' ')}</Link>;
+        return <Link key={category} to={`/reviews/${category}`}>{category.replaceAll('-',' ')}</Link>;
       })}
     </section>
   );

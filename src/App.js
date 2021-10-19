@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import ReviewList from './components/ReviewList';
 import Profile from './components/Profile';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CategoryMenu from './components/CategoryMenu';
 
 function App() {
@@ -23,9 +23,9 @@ function App() {
           <CategoryMenu />
           {/*      HomeGallery */}
         </Route>
-        <Route exact path="/profile">
+        <Route exact path="/:username/profile">
           <Profile user={user} />
-          <ReviewList avatar={user.avatar_url} username={user.username} />
+          <ReviewList />
         </Route>
         <Route exact path="/login">
           {/* Login  loginInputs ={inputs}*/}
