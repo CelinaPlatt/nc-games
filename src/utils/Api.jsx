@@ -26,9 +26,9 @@ export const getCategoryDesc = async (categorySlug) => {
 
 export const getReviews = async (params) => {
   const { data } = await gamesApi.get('/reviews', {
-    params: { params },
+    params: { ...params },
   });
-
+console.log(params,data.reviews,'<<<reviews from api')
   return data.reviews;
 };
 

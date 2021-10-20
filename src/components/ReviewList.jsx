@@ -11,7 +11,7 @@ const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(null);
-  console.log(useParams(), '<<review_id');
+  console.log(reviews);
   let params = {
     sort_by: 'created_at',
   };
@@ -52,7 +52,7 @@ const ReviewList = () => {
       }
     }
     let trimmedStr = trimmedArr.join(' ');
-    
+
     return trimmedStr;
   };
 
