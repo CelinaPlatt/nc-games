@@ -28,7 +28,6 @@ export const getReviews = async (params) => {
   const { data } = await gamesApi.get('/reviews', {
     params: { ...params },
   });
-console.log(params,data.reviews,'<<<reviews from api')
   return data.reviews;
 };
 
@@ -40,17 +39,12 @@ export const getReviewsByUser = async (username) => {
   return userReviews;
 };
 
-export const getReviewsByTitle = async (username) => {
-  const { data } = await gamesApi.get('/reviews');
-  const userReviews = data.reviews.filter((review) => {
-    return review.owner === username;
-  });
-  return userReviews;
-};
-
 export const getReviewById = async (review_id) => {
   const { data } = await gamesApi.get(`/reviews/${review_id}`);
-  console.log(review_id,'review_id');
   return [data.review];
 };
 
+export const getCommentsByReviewId = async (review_id) => {
+  const { data } = await gamesApi.get(`/reviews/${review_id}/comments`);
+  return data.comments;
+};

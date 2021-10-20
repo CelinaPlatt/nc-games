@@ -6,7 +6,6 @@ const Expandable = ({ children, count, comments, nav }) => {
   const toggleIsOpen = () => {
     setIsOpen((isOpen) => !isOpen);
   };
-  console.log(count, '<<counter');
   return (
     <div>
       <button onClick={toggleIsOpen}>

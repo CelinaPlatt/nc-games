@@ -1,10 +1,10 @@
 import '../styles/ReviewList.css';
-import { FaRegHeart, FaCommentAlt } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getReviewById, getReviews, getReviewsByUser } from '../utils/Api';
 import { Link } from 'react-router-dom';
-import Expandable from './Expandable';
+import Comments from './Comments';
 
 const ReviewList = () => {
   const { category, username, review_id } = useParams();
@@ -12,7 +12,6 @@ const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(null);
-  console.log(reviews);
   let params = {
     sort_by: 'created_at',
   };
@@ -40,7 +39,7 @@ const ReviewList = () => {
       }
     }
     fetchReviews();
-  }, [category, username]);
+  }, [category, username,review_id]);
 
   const trimDescription = (description) => {
     let charCount = 0;
@@ -101,10 +100,7 @@ const ReviewList = () => {
               </p>
             </section>
             <section className="buttons">
-              <Expandable comments={true} count={review.comment_count} >
-                <img src="/images/pexels-raka-miftah-4253485.jpg" alt="username" />
-                <p>This is a comment</p>
-              </Expandable>
+              <Comments count={review.comment_count} review_id={review.review_id} />
               <button className="likesBttn">
                 <FaRegHeart /> {review.votes}
               </button>
