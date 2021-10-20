@@ -100,7 +100,7 @@ const ReviewList = () => {
               </p>
             </section>
             <section className="buttons">
-              <Comments count={review.comment_count} review_id={review.review_id} />
+              <Comments count={review.comment_count} reviewId={review.review_id} />
               <button className="likesBttn">
                 <FaRegHeart /> {review.votes}
               </button>

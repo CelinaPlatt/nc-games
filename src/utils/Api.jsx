@@ -48,3 +48,4 @@ export const getCommentsByReviewId = async (review_id) => {
   const { data } = await gamesApi.get(`/reviews/${review_id}/comments`);
   return data.comments;
 };
+
