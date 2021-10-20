@@ -47,7 +47,7 @@ const ReviewList = () => {
   return (
     <section className="reviewList">
       {reviews.map((review) => {
-        return <Review review={review} />;
+        return <Review key={review.review_id} review={review} />;
       })}
     </section>
   );
