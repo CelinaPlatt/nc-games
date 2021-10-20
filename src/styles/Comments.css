@@ -1,0 +1,23 @@
+.commentFlexContainer {
+  display: flex;
+  flex-direction: column;
+}
+.commentCard p {
+  font-size: 14px;
+}
+
+.commentCard {
+  margin: 20px 0;
+}
+
+.commentBody {
+  background: rgb(255, 255, 255);
+  width: 60vw;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 25px;
+  /* padding:20px; */
+}
+.commentLikesBtn {
+  float: right;
+}

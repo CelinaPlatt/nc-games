@@ -1,18 +1,19 @@
-
 .nav {
-height: 10vh;
-background-color: rgb(201, 190, 175);
-display:flex;
-justify-content: space-around;
-
+  height: 10vh;
+  background-color: rgb(217, 200, 177);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  padding:0 20px;
+}
+.nav a {
+  color: white;
+  font-weight: bolder;
 }
 
 .nav__profileImg {
-    width: auto;
-    height: 50%;
-    border-radius: 25px;
-}
-
-.hidden {
-    display:none;
+  height: 30px;
+  width: auto;
+  border-radius: 25px;
 }

@@ -1,3 +1,4 @@
+/* hide view more link */
 .hidden {
   display: none;
 }
@@ -5,22 +6,25 @@
 .reviewList {
   width: 80vw;
   margin: 0 auto;
-  background-color: thistle;
+  padding: 25px 0;
+  background-color: rgb(227,222,207);
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
 }
 
 .reviewCard {
-  width: 50%;
-  margin: 10px auto;
-  background-color: rgb(192, 192, 192);
+  width: 80%;
+  margin: 20px auto;
+  background-color: rgb(196,196,196);
   align-content: center;
   border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
 }
 
-img {
+.reviewCard img {
   height: auto;
   width: 100%;
   object-fit: cover;
@@ -39,8 +43,14 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  padding: 7px;
+  padding: 20px 10px;
+  text-align:left;
 }
+
+.reviewCard__details p {
+  font-size: 14px;
+}
+
 .buttons {
   display: flex;
   justify-content: space-around;
@@ -50,7 +60,11 @@ img {
 button {
   display: flex;
   align-content: center;
-  justify-content: space-between;
+
   background-color: rgba(255, 255, 255, 0);
   border: 0;
+}
+
+@media only screen and (min-width: 400px) {
+
 }

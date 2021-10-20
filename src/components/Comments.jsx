@@ -4,6 +4,7 @@ import { getCommentsByReviewId } from '../utils/Api';
 import { FaRegHeart } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import '../styles/Comments.css';
 
 const Comments = ({ count, reviewId }) => {
   const { review_id } = useParams();
@@ -59,8 +60,10 @@ const Comments = ({ count, reviewId }) => {
             {comments.map((comment) => {
               return (
                 <section className="commentCard">
-                  <p className="comment__Title">{comment.author}</p>
-                  <p className="comment__Body">{comment.body}</p>
+                  <div className="commentFlexContainer">
+                    <p className="commentTitle">{comment.author}</p>
+                    <p className="commentBody">{comment.body}</p>
+                  </div>
                   <button className="commentLikesBtn">
                     <FaRegHeart />
                     {comment.votes}
