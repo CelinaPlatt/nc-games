@@ -39,20 +39,27 @@ const ReviewList = () => {
       }
     }
     fetchReviews();
-  }, [category,username]);
+  }, [category, username]);
 
   const trimDescription = (description) => {
     let charCount = 0;
     const descArr = description.split(' ');
-    const trimmedDesc = [];
+    const trimmedArr = [];
     for (let word of descArr) {
       if (charCount < 100) {
         charCount = charCount + word.length;
-        trimmedDesc.push(word);
+        trimmedArr.push(word);
       }
     }
+    let trimmedStr = trimmedArr.join(' ');
+    
+    return trimmedStr;
+  };
 
-    return trimmedDesc.join(' ');
+  const isCompleteDesc = (description) => {
+    return (
+    description.length === trimDescription(description).length
+    );
   };
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
@@ -79,10 +86,14 @@ const ReviewList = () => {
                 <p>{review.title}</p>
               </section>
               <p>
-                { review_id? review.review_body : `${trimDescription(review.review_body)}...`}
+                {review_id || isCompleteDesc(review.review_body)
+                  ? review.review_body
+                  : trimDescription(review.review_body) + " ..."}
                 <Link
                   to={`/reviews/${review.review_id}`}
-                  className={review_id? 'hidden' :'viewMoreLink'}
+                  className={
+                    review_id || isCompleteDesc(review.review_body) ?'hidden': 'viewMoreLink' 
+                  }
                 >
                   view more
                 </Link>
