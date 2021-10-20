@@ -4,6 +4,7 @@ height: 10vh;
 background-color: rgb(201, 190, 175);
 display:flex;
 justify-content: space-around;
+
 }
 
 .nav__profileImg {

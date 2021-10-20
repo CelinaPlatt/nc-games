@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getReviewById, getReviews, getReviewsByUser } from '../utils/Api';
 import { Link } from 'react-router-dom';
+import Expandable from './Expandable';
 
 const ReviewList = () => {
   const { category, username, review_id } = useParams();
@@ -57,9 +58,7 @@ const ReviewList = () => {
   };
 
   const isCompleteDesc = (description) => {
-    return (
-    description.length === trimDescription(description).length
-    );
+    return description.length === trimDescription(description).length;
   };
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
@@ -88,11 +87,13 @@ const ReviewList = () => {
               <p>
                 {review_id || isCompleteDesc(review.review_body)
                   ? review.review_body
-                  : trimDescription(review.review_body) + " ..."}
+                  : trimDescription(review.review_body) + ' ...'}
                 <Link
                   to={`/reviews/${review.review_id}`}
                   className={
-                    review_id || isCompleteDesc(review.review_body) ?'hidden': 'viewMoreLink' 
+                    review_id || isCompleteDesc(review.review_body)
+                      ? 'hidden'
+                      : 'viewMoreLink'
                   }
                 >
                   view more
@@ -100,9 +101,10 @@ const ReviewList = () => {
               </p>
             </section>
             <section className="buttons">
-              <button className="likesBttn">
-                <FaCommentAlt /> {review.comment_count}
-              </button>
+              <Expandable comments={true} count={review.comment_count} >
+                <img src="/images/pexels-raka-miftah-4253485.jpg" alt="username" />
+                <p>This is a comment</p>
+              </Expandable>
               <button className="likesBttn">
                 <FaRegHeart /> {review.votes}
               </button>
