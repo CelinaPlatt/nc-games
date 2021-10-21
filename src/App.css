@@ -8,9 +8,20 @@
   margin:0;
   padding:0;
   font-size:16px;
+
+}
+
+body {
+  background: rgb(227,235,232);
 }
 /* ------------FONT-------------- */
 a{
   text-decoration: none;
 }
 
+.reviewList {
+  z-index: 10000;
+  position: relative;
+  top: -25px;
+
+}
