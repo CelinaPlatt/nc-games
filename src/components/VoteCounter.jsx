@@ -1,8 +1,8 @@
 import { FaRegHeart } from 'react-icons/fa';
 import { useState } from 'react';
-import { patchReviewVotes } from '../utils/Api';
+import { patchCommentsVotes, patchReviewVotes } from '../utils/Api';
 
-const VoteCounter = ({ votes, review_id }) => {
+const VoteCounter = ({ votes, review_id, comment_id }) => {
   const [votesChange, setVotesChange] = useState(0);
   const [isError, setIsError] = useState(false);
 
@@ -10,7 +10,12 @@ const VoteCounter = ({ votes, review_id }) => {
     try {
       setIsError(false);
       setVotesChange((currVotesChange) => currVotesChange + 1);
-      await patchReviewVotes(review_id, 1);
+      if (review_id) {
+        await patchReviewVotes(review_id, 1);
+      }
+      if (comment_id) {
+        await patchCommentsVotes(comment_id, 1);
+      }
     } catch (err) {
       setIsError(true);
       setVotesChange((currVotesChange) => currVotesChange - 1);

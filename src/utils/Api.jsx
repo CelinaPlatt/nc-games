@@ -56,6 +56,14 @@ export const patchReviewVotes = async (review_id, vote) => {
   return data.review;
 };
 
+export const patchCommentsVotes = async (comment_id, vote) => {
+  const { data } = await gamesApi.patch(`/comments/${comment_id}`, {
+    inc_votes: vote,
+  });
+  console.log(data.comment,"<<comment");
+  return data.comment;
+};
+
 export const getUsers = async () => {
   try {
     const { data } = await gamesApi.get(`/users`);

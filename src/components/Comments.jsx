@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { FaCommentAlt } from 'react-icons/fa';
 import { getCommentsByReviewId } from '../utils/Api';
-import { FaRegHeart } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import '../styles/Comments.css';
 import { UsersContext } from '../contexts/Users';
 import { useContext } from 'react/cjs/react.development';
 import { addUserAvatar } from '../utils/DataManipulation';
+import VoteCounter from './VoteCounter';
 
 const Comments = ({ count, reviewId }) => {
   const { review_id } = useParams();
@@ -84,8 +84,7 @@ const Comments = ({ count, reviewId }) => {
                       <p className="commentAvatarP">{comment.author}</p>
                       <p>{comment.body}</p>
                       <button className="commentLikesBtn">
-                        <FaRegHeart />
-                        {comment.votes}
+                      <VoteCounter votes={comment.votes} comment_id={comment.comment_id}/>
                       </button>
                     </div>
                   </div>
