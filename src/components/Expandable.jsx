@@ -10,8 +10,8 @@ const Expandable = ({ children}) => {
   const iconStyles = { color: 'white' };
   return (
     <div>
-      <button  onMouseOver={()=>{setIsOpen(true)}}  >
-        {/* onMouseOut={()=>{setIsOpen(false)}} */}
+      <button  onMouseOver={()=>{setIsOpen(true)}} onMouseOut={()=>{setIsOpen(false)}}  >
+        
          <FaBars style={iconStyles} /> 
       </button>
      

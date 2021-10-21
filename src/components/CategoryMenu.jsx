@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { getCategories } from '../utils/Api';
 import '../styles/CategoryMenu.css';
 import { Link } from 'react-router-dom';
 import useCategories from '../hooks/useCategories';

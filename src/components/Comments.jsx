@@ -5,16 +5,26 @@ import { FaRegHeart } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import '../styles/Comments.css';
-import Avatar from './Avatar';
+import { UsersContext } from '../contexts/Users';
+import { useContext } from 'react/cjs/react.development';
+import { addUserAvatar } from '../utils/DataManipulation';
 
 const Comments = ({ count, reviewId }) => {
   const { review_id } = useParams();
   const isFullPageReview = review_id;
+
   const [isOpen, setIsOpen] = useState(false);
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(null);
 
   const [comments, setComments] = useState([]);
+  const { users} = useContext(UsersContext);
+
+  const commentsWithAvatar = addUserAvatar(users, comments);
+  // // iterate comments
+  //   // iterate users
+  //   // add property
+  //   // console.log(comments,"<<<comments after")
 
   const toggleIsOpen = () => {
     isFullPageReview && setIsOpen((isOpen) => !isOpen);
@@ -58,17 +68,28 @@ const Comments = ({ count, reviewId }) => {
       {isOpen && (
         <>
           <section className="commentsContainer">
-            {comments.map((comment) => {
+            {commentsWithAvatar.map((comment) => {
               return (
                 <section key={comment.comment_id} className="commentCard">
                   <div className="commentFlexContainer">
-                    <Avatar author={comment.author}/>
-                    <p className="commentBody">{comment.body}</p>
-                  </div>
-                  <button className="commentLikesBtn">
+                    <img
+                      className="commentAvatarImg"
+                      src={comment.avatar_url}
+                      alt={comment.author}
+                      onError={(e) => {
+                        e.target.src = "/images/pexels-jan-kopřiva-5800065.jpg"
+                       }}
+                    />
+                    <div className="commentBody">
+                      <p className="commentAvatarP">{comment.author}</p>
+                      <p >{comment.body}</p>
+                      <button className="commentLikesBtn">
                     <FaRegHeart />
                     {comment.votes}
                   </button>
+                    </div>
+                  </div>
+                  
                 </section>
               );
             })}

@@ -5,7 +5,6 @@ import Comments from './Comments';
 import { trimDescription } from '../utils/DataManipulation';
 import VoteCounter from './VoteCounter';
 
-
 const Review = ({ review }) => {
   const { review_id } = useParams();
   const isFullPageReview = review_id;
@@ -22,10 +21,18 @@ const Review = ({ review }) => {
         alt={review.title}
       />
       <section className="reviewCard__details">
+        <Link className="linkToUserReviews" to={`/users/${review.owner}/reviews`}>
+          <img
+            className="reviewAvatarImg"
+            src={review.avatar_url}
+            alt={review.owner}
+            onError={(e) => {
+              e.target.src = "/images/pexels-jan-kopřiva-5800065.jpg"
+             }}
+          />
+           <p>{review.owner}</p>
+        </Link>
         <section className="reviewCard__text">
-          <Link to={`/users/${review.owner}/reviews`}>
-            <p>{review.owner}</p>
-          </Link>
 
           <p>{review.title}</p>
         </section>

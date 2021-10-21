@@ -6,6 +6,7 @@ import ReviewList from './components/ReviewList';
 import Profile from './components/Profile';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CategoryMenu from './components/CategoryMenu';
+import { UsersProvider } from './contexts/Users';
 
 function App() {
   const [user] = useState({
@@ -16,51 +17,51 @@ function App() {
   });
 
   return (
-    <BrowserRouter>
-      <Nav avatar={user.avatar_url} username={user.username} />
-      <Switch>
-        <Route exact path="/">
-          <CategoryMenu />
-          {/*      HomeGallery */}
-        </Route>
+    <UsersProvider>
+      <BrowserRouter>
+        <Nav avatar={user.avatar_url} username={user.username} />
+        <Switch>
+          <Route exact path="/">
+            <CategoryMenu />
+            {/*      HomeGallery */}
+          </Route>
 
-        <Route exact path="/:username/profile">
-          <Profile user={user} />
-          <ReviewList />
-        </Route>
+          <Route exact path="/:username/profile">
+            <Profile user={user} />
+            <ReviewList />
+          </Route>
 
-        <Route exact path="/login">
-          {/* Login  loginInputs ={inputs}*/}
-        </Route>
+          <Route exact path="/login">
+            {/* Login  loginInputs ={inputs}*/}
+          </Route>
 
-        <Route exact path="/register">
-          {/* Login  registerInputs ={inputs}*/}
-        </Route>
+          <Route exact path="/register">
+            {/* Login  registerInputs ={inputs}*/}
+          </Route>
 
-        <Route exact path="/profile/editor">
-          {/* Editor  formInputs ={inputs}*/}
-        </Route>
+          <Route exact path="/profile/editor">
+            {/* Editor  formInputs ={inputs}*/}
+          </Route>
 
-        <Route exact path="/reviews/:review_id">
-          <Header />
-          <ReviewList />
-        </Route>
+          <Route exact path="/reviews/:review_id">
+            <ReviewList />
+          </Route>
 
-        <Route exact path="/:category/reviews">
-          <Header />
-          <ReviewList avatar={user.avatar_url} username={user.username} />
-        </Route>
+          <Route exact path="/:category/reviews">
+            <Header />
+            <ReviewList avatar={user.avatar_url} username={user.username} />
+          </Route>
 
-        <Route exact path="/users/:username/reviews">
-          <Header />
-          <ReviewList />
-        </Route>
+          <Route exact path="/users/:username/reviews">
+            <ReviewList />
+          </Route>
 
-        <Route exact path="editor/reviews/:review_id">
-          {/* Review */}
-        </Route>
-      </Switch>
-    </BrowserRouter>
+          <Route exact path="editor/reviews/:review_id">
+            {/* Review */}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </UsersProvider>
   );
 }
 
