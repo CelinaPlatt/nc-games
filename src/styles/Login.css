@@ -1,0 +1,30 @@
+.loginForm {
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .loginImg {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100px;
+  margin:40px auto;
+
+}
+
+.loginForm button {
+  width: 250px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.loginBtn {
+  background-color: rgb(178, 163, 30);
+}
+
+.registerBtn {
+  background-color: rgb(58, 124, 124);
+}

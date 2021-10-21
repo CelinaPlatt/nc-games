@@ -9,6 +9,7 @@ import { UsersProvider } from './contexts/Users';
 import HeaderCategory from './components/HeaderCategory.jsx';
 import HeaderUserReviews from './components/HeaderUserReviews';
 import HeaderFullPageReview from './components/HeaderFullPageReview';
+import Login from './components/Login';
 
 function App() {
   const [user] = useState({
@@ -34,10 +35,12 @@ function App() {
           </Route>
 
           <Route exact path="/login">
+            <Login />
             {/* Login  loginInputs ={inputs}*/}
           </Route>
 
           <Route exact path="/register">
+            <Login />
             {/* Login  registerInputs ={inputs}*/}
           </Route>
 
@@ -56,7 +59,7 @@ function App() {
           </Route>
 
           <Route exact path="/users/:username/reviews">
-            <HeaderUserReviews/>
+            <HeaderUserReviews />
             <ReviewList />
           </Route>
 
