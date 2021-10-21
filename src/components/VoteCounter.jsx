@@ -2,6 +2,9 @@ import { FaRegHeart } from 'react-icons/fa';
 import { useState } from 'react';
 import { patchCommentsVotes, patchReviewVotes } from '../utils/Api';
 
+import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
+
 const VoteCounter = ({ votes, review_id, comment_id }) => {
   const [votesChange, setVotesChange] = useState(0);
   const [isError, setIsError] = useState(false);
@@ -19,6 +22,9 @@ const VoteCounter = ({ votes, review_id, comment_id }) => {
     } catch (err) {
       setIsError(true);
       setVotesChange((currVotesChange) => currVotesChange - 1);
+      setTimeout(() => {
+        setIsError(false);
+      }, 3000);
     }
   };
 
@@ -27,8 +33,14 @@ const VoteCounter = ({ votes, review_id, comment_id }) => {
       <button className="votesBtn" onClick={handleVote}>
         <FaRegHeart /> {Number(votes) + votesChange}
       </button>
-      {isError ? <p>Woops! there was an error. Try again later</p> : null}
-      {/* make error a pop up box */}
+      {isError ? (
+        <Box sx={{ width: '100%' }}>
+          <Alert severity="error">
+            Oops! There's been an error.Try again later
+          </Alert>
+        </Box>
+        // Add css for error toast
+      ) : null}
     </>
   );
 };
