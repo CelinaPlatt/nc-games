@@ -18,7 +18,7 @@ const Comments = ({ count, reviewId }) => {
   const [loading, setLoading] = useState(null);
 
   const [comments, setComments] = useState([]);
-  const { users} = useContext(UsersContext);
+  const { users } = useContext(UsersContext);
 
   const commentsWithAvatar = addUserAvatar(users, comments);
   // // iterate comments
@@ -55,7 +55,7 @@ const Comments = ({ count, reviewId }) => {
         <button onClick={toggleIsOpen}>
           <FaCommentAlt />
           <span className="commentCount">{count} </span>
-          {isOpen && <span className="labelHideComments">hide comments</span>}
+          {<span className="labelHideComments">hide comments</span>}
         </button>
       ) : (
         <Link to={`/reviews/${reviewId}`}>
@@ -65,7 +65,7 @@ const Comments = ({ count, reviewId }) => {
           </button>
         </Link>
       )}
-      {isOpen && (
+      {isOpen || isFullPageReview && (
         <>
           <section className="commentsContainer">
             {commentsWithAvatar.map((comment) => {
@@ -77,19 +77,18 @@ const Comments = ({ count, reviewId }) => {
                       src={comment.avatar_url}
                       alt={comment.author}
                       onError={(e) => {
-                        e.target.src = "/images/pexels-jan-kopřiva-5800065.jpg"
-                       }}
+                        e.target.src = '/images/pexels-jan-kopřiva-5800065.jpg';
+                      }}
                     />
                     <div className="commentBody">
                       <p className="commentAvatarP">{comment.author}</p>
-                      <p >{comment.body}</p>
+                      <p>{comment.body}</p>
                       <button className="commentLikesBtn">
-                    <FaRegHeart />
-                    {comment.votes}
-                  </button>
+                        <FaRegHeart />
+                        {comment.votes}
+                      </button>
                     </div>
                   </div>
-                  
                 </section>
               );
             })}
