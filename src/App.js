@@ -8,7 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CategoryMenu from './components/CategoryMenu';
 
 function App() {
-  const [user, setUser] = useState({
+  const [user] = useState({
     username: 'jessjelly',
     name: 'Jess Jelly',
     avatar_url:
@@ -23,21 +23,26 @@ function App() {
           <CategoryMenu />
           {/*      HomeGallery */}
         </Route>
+
         <Route exact path="/:username/profile">
           <Profile user={user} />
           <ReviewList />
         </Route>
+
         <Route exact path="/login">
           {/* Login  loginInputs ={inputs}*/}
         </Route>
+
         <Route exact path="/register">
           {/* Login  registerInputs ={inputs}*/}
         </Route>
+
         <Route exact path="/profile/editor">
           {/* Editor  formInputs ={inputs}*/}
         </Route>
 
         <Route exact path="/reviews/:review_id">
+          <Header />
           <ReviewList />
         </Route>
 
@@ -47,6 +52,7 @@ function App() {
         </Route>
 
         <Route exact path="/users/:username/reviews">
+          <Header />
           <ReviewList />
         </Route>
 

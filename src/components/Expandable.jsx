@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { FaCommentAlt, FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 
-const Expandable = ({ children, count, comments, nav }) => {
+const Expandable = ({ children}) => {
   const [isOpen, setIsOpen] = useState(false);
   // const toggleIsOpen = () => {
   //   setIsOpen((isOpen) => !isOpen);
@@ -12,13 +12,9 @@ const Expandable = ({ children, count, comments, nav }) => {
     <div>
       <button  onMouseOver={()=>{setIsOpen(true)}}  >
         {/* onMouseOut={()=>{setIsOpen(false)}} */}
-        {nav ? <FaBars style={iconStyles} /> : null}
-        {comments ? <FaCommentAlt /> : null}
-        {comments && <span className="commentCount">{count}</span>}
+         <FaBars style={iconStyles} /> 
       </button>
-      {isOpen && comments && (
-        <span className="labelHideComments">hide comments</span>
-      )}
+     
       {isOpen && children}
     </div>
   );

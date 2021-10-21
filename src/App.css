@@ -3,25 +3,34 @@
 }
 /* ------------GLOBAL-------------- */
 
-*{
+* {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
-  font-size:16px;
-
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
 }
 
 body {
-  background: rgb(227,235,232);
+  background: rgb(227, 235, 232);
 }
-/* ------------FONT-------------- */
-a{
-  text-decoration: none;
-}
-
+/* ------------POSITION-------------- */
 .reviewList {
-  z-index: 10000;
+  z-index:10;
   position: relative;
   top: -25px;
+}
 
+.navBarMenu {
+  z-index:11;
+  position:absolute;
+  top:10vh;
+  left: 0;
+}
+
+.navBarMenu {
+  z-index: 1000;
+}
+/* ------------FONT-------------- */
+a {
+  text-decoration: none;
 }

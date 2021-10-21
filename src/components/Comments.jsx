@@ -5,15 +5,16 @@ import { FaRegHeart } from 'react-icons/fa';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import '../styles/Comments.css';
+import Avatar from './Avatar';
 
 const Comments = ({ count, reviewId }) => {
   const { review_id } = useParams();
   const isFullPageReview = review_id;
-
   const [isOpen, setIsOpen] = useState(false);
-  const [comments, setComments] = useState([]);
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(null);
+
+  const [comments, setComments] = useState([]);
 
   const toggleIsOpen = () => {
     isFullPageReview && setIsOpen((isOpen) => !isOpen);
@@ -59,9 +60,9 @@ const Comments = ({ count, reviewId }) => {
           <section className="commentsContainer">
             {comments.map((comment) => {
               return (
-                <section className="commentCard">
+                <section key={comment.comment_id} className="commentCard">
                   <div className="commentFlexContainer">
-                    <p className="commentTitle">{comment.author}</p>
+                    <Avatar author={comment.author}/>
                     <p className="commentBody">{comment.body}</p>
                   </div>
                   <button className="commentLikesBtn">

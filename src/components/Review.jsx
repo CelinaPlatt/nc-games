@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { useEffect, useState } from 'react';
 import Comments from './Comments';
 
 import { trimDescription } from '../utils/DataManipulation';
 import VoteCounter from './VoteCounter';
+
 
 const Review = ({ review }) => {
   const { review_id } = useParams();
@@ -16,7 +16,11 @@ const Review = ({ review }) => {
 
   return (
     <section className="reviewCard">
-      <img src={review.review_img_url} alt={review.title} />
+      <img
+        className="reviewImg"
+        src={review.review_img_url}
+        alt={review.title}
+      />
       <section className="reviewCard__details">
         <section className="reviewCard__text">
           <Link to={`/users/${review.owner}/reviews`}>

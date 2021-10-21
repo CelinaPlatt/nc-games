@@ -1,5 +1,5 @@
 import { FaRegHeart } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { patchReviewVotes } from '../utils/Api';
 
 const VoteCounter = ({ votes, review_id }) => {
