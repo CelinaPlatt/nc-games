@@ -1,12 +1,14 @@
 import './App.css';
 import Nav from './components/Nav';
 import { useState } from 'react';
-import Header from './components/Header';
 import ReviewList from './components/ReviewList';
 import Profile from './components/Profile';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CategoryMenu from './components/CategoryMenu';
 import { UsersProvider } from './contexts/Users';
+import HeaderCategory from './components/HeaderCategory.jsx';
+import HeaderUserReviews from './components/HeaderUserReviews';
+import HeaderFullPageReview from './components/HeaderFullPageReview';
 
 function App() {
   const [user] = useState({
@@ -44,15 +46,17 @@ function App() {
           </Route>
 
           <Route exact path="/reviews/:review_id">
+            <HeaderFullPageReview/>
             <ReviewList />
           </Route>
 
           <Route exact path="/:category/reviews">
-            <Header />
+            <HeaderCategory />
             <ReviewList avatar={user.avatar_url} username={user.username} />
           </Route>
 
           <Route exact path="/users/:username/reviews">
+            <HeaderUserReviews/>
             <ReviewList />
           </Route>
 

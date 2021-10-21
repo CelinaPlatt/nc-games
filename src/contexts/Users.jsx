@@ -6,17 +6,22 @@ export const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
   const [users, setUsers] = useState(null);
+//   const [err,setErr] = useState(false;)
 
   useEffect(() => {
     async function fetchUsers() {
-    //   setLoadingUsers(true);
-      const usersFromApi = await getUsers();
-      setUsers(usersFromApi);
-    //   setLoadingUsers(false);
+      try {
+        //   setLoadingUsers(true);
+        const usersFromApi = await getUsers();
+        setUsers(usersFromApi);
+        //   setLoadingUsers(false);
+      } catch (err) {
+        console.log(err);
+      }
     }
     fetchUsers();
   }, []);
-  
+
   return (
     <UsersContext.Provider value={{ users, setUsers }}>
       {children}
