@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 export const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
 //   const [err,setErr] = useState(false;)
 
   useEffect(() => {
