@@ -10,6 +10,7 @@ import HeaderCategory from './components/HeaderCategory.jsx';
 import HeaderUserReviews from './components/HeaderUserReviews';
 import HeaderFullPageReview from './components/HeaderFullPageReview';
 import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
   const [user] = useState({
@@ -40,7 +41,7 @@ function App() {
           </Route>
 
           <Route exact path="/register">
-            <Login />
+            <Register/>
             {/* Login  registerInputs ={inputs}*/}
           </Route>
 
