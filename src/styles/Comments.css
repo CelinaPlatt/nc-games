@@ -1,3 +1,4 @@
+
 .commentFlexContainer {
   width:100%;
   display: flex;
@@ -6,6 +7,31 @@
 }
 .commentCard p {
   font-size: 14px;
+}
+.commentCard textarea{
+ border:0;
+ width:98%;
+ height:30px;
+ padding:10px 15px;
+ font-size: 12px;
+ border-radius: 20px;
+ box-shadow: inset 0 2px 8px 0 rgba(0,0,0,0.2);
+}
+
+.commentCard textarea:focus {
+  height:80px;
+}
+
+ #postBtn{
+   margin-top:10px;
+  float:right;
+  border-radius: 15px;
+  background: rgb(226, 226, 226);
+  color:rgb(59, 59, 59);
+  font-size: 12px;
+  padding:8px 15px;
+  /* padding:5px; */
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
 }
 
 .commentCard {
@@ -40,4 +66,8 @@
   object-fit: cover;
   border-radius: 25px;
 
+}
+
+.previewCommentCard {
+  color:rgb(182, 7, 7);
 }

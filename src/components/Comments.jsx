@@ -8,6 +8,7 @@ import { UsersContext } from '../contexts/Users';
 import { useContext } from 'react/cjs/react.development';
 import { addUserAvatar } from '../utils/DataManipulation';
 import VoteCounter from './VoteCounter';
+import NewComment from './NewComment';
 
 const Comments = ({ count, reviewId }) => {
   const { review_id } = useParams();
@@ -18,13 +19,17 @@ const Comments = ({ count, reviewId }) => {
   const [loading, setLoading] = useState(null);
 
   const [comments, setComments] = useState([]);
+
   const { users } = useContext(UsersContext);
+  console.log(users,"<<<users in component")
+  
 
   const commentsWithAvatar = addUserAvatar(users, comments);
   // // iterate comments
   //   // iterate users
   //   // add property
   //   // console.log(comments,"<<<comments after")
+  console.log(commentsWithAvatar,"obj added avatar")
 
   const toggleIsOpen = () => {
     isFullPageReview && setIsOpen((isOpen) => !isOpen);
@@ -92,6 +97,7 @@ const Comments = ({ count, reviewId }) => {
               );
             })}
           </section>
+          <NewComment/>
         </>
       )}
     </div>

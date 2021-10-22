@@ -9,7 +9,7 @@ import { UsersContext } from '../contexts/Users';
 const ReviewList = () => {
   const { category, username, review_id } = useParams();
   const { users} = useContext(UsersContext);
-
+  console.log(users,"<<<users in component review list")
 
   let params = {
     sort_by: 'created_at',
