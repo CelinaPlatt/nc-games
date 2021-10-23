@@ -1,3 +1,11 @@
+.profileHeader {
+  background-color: rgb(188,125,52);
+  padding: 25px 0;
+  /* height: 30vh; */
+  text-align: center;
+  padding-bottom: 60px;
+}
+
 .profileCard {
   width: 50vw;
   margin: 0 auto;

@@ -6,8 +6,8 @@ import useReviewById from '../hooks/useReviewById';
 const HeaderFullPageReview = () => {
   const { review_id } = useParams();
 
-  const { review } = useReviewById(review_id);
-  console.log(review, '<<<<review');
+  const { review,loading,err } = useReviewById(review_id);
+
 
   return (
     <header className="header">
