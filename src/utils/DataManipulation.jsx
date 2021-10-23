@@ -28,8 +28,6 @@ export const addUserAvatar = (users, comments) => {
 };
 
 export const addUserAvatarToReviews = (users, obj, prop) => {
-  console.log(users, '<<users in utils');
-
   for (let element of obj) {
     const author = element[prop];
 
@@ -39,7 +37,6 @@ export const addUserAvatarToReviews = (users, obj, prop) => {
         element.avatar_url = user.avatar_url;
       }
     }
-    console.log(element.avatar_url, '<url');
   }
 
   return obj;

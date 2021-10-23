@@ -67,7 +67,6 @@ export const patchCommentsVotes = async (comment_id, vote) => {
 export const getUsers = async () => {
   try {
     const { data } = await gamesApi.get(`/users`);
-    console.log(data.users, '<<<<users');
     return data.users;
   } catch (err) {
     console.log('Oops! Something went wrong');
@@ -75,8 +74,8 @@ export const getUsers = async () => {
 };
 
 export const postComment = async (username, review_id, body) => {
-  const { data } = await gamesApi.post(`/reviews/${review_id}/comments`, {
-    author: username,
+  const { data } = await gamesApi.post(`/${review_id}/comments`, {
+    username: username,
     body: body,
   });
   console.log(data.comment, '<<comment');

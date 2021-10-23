@@ -21,15 +21,8 @@ const Comments = ({ count, reviewId }) => {
   const [comments, setComments] = useState([]);
 
   const { users } = useContext(UsersContext);
-  console.log(users,"<<<users in component")
-  
 
   const commentsWithAvatar = addUserAvatar(users, comments);
-  // // iterate comments
-  //   // iterate users
-  //   // add property
-  //   // console.log(comments,"<<<comments after")
-  console.log(commentsWithAvatar,"obj added avatar")
 
   const toggleIsOpen = () => {
     isFullPageReview && setIsOpen((isOpen) => !isOpen);

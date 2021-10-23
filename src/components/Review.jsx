@@ -52,9 +52,11 @@ const Review = ({ review }) => {
           </Link>
         </p>
       </section>
+      <VoteCounter votes={review.votes} review_id={review.review_id} />
       <section className="buttons">
+    
         <Comments count={review.comment_count} reviewId={review.review_id} />
-        <VoteCounter votes={review.votes} review_id={review.review_id} />
+       
       </section>
     </section>
   );

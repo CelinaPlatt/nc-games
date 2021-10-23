@@ -50,7 +50,7 @@ function App() {
           </Route>
 
           <Route exact path="/reviews/:review_id">
-            {/* <HeaderFullPageReview/> */}
+            <HeaderFullPageReview/>
             <ReviewList />
           </Route>
 

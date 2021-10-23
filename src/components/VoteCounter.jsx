@@ -30,7 +30,7 @@ const VoteCounter = ({ votes, review_id, comment_id }) => {
 
   return (
     <>
-      <button className="votesBtn" onClick={handleVote}>
+      <button id="votesBtn" onClick={handleVote}>
         <FaRegHeart /> {Number(votes) + votesChange}
       </button>
       {isError ? (

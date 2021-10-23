@@ -4,13 +4,13 @@ import { getReviewById, getReviews, getReviewsByUser } from "../utils/Api";
 
 const useReviews = (username,review_id,params) => {
   const [reviews, setReviews] = useState([]);
-  const [err, setErr] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchReviews() {
       try {
-        setErr(null);
+        setErr(false);
         setLoading(true);
         let reviewsFromApi = [];
         if (username) {
