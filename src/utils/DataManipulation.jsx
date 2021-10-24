@@ -1,8 +1,8 @@
-export const trimDescription = (description) => {
+export const trimReviewBody = (reviewBody) => {
   let charCount = 0;
-  const descArr = description.split(' ');
+  const bodyArr = reviewBody.split(' ');
   const trimmedArr = [];
-  for (let word of descArr) {
+  for (let word of bodyArr) {
     if (charCount < 100) {
       charCount = charCount + word.length;
       trimmedArr.push(word);

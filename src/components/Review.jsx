@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import Comments from './Comments';
 
-import { trimDescription } from '../utils/DataManipulation';
+import { trimReviewBody } from '../utils/DataManipulation';
 import VoteCounter from './VoteCounter';
 
 const Review = ({ review }) => {
   const { review_id } = useParams();
   const isFullPageReview = review_id;
 
-  const isCompleteDesc = (description) => {
-    return description.length === trimDescription(description).length;
+  const isCompleteReview = (reviewBody) => {
+    return reviewBody.length === trimReviewBody(reviewBody).length;
   };
 
   return (
@@ -37,13 +37,13 @@ const Review = ({ review }) => {
           <p>{review.title}</p>
         </section>
         <p>
-          {isFullPageReview || isCompleteDesc(review.review_body)
+          {isFullPageReview || isCompleteReview(review.review_body)
             ? review.review_body
-            : trimDescription(review.review_body) + ' ...'}
+            : trimReviewBody(review.review_body) + ' ...'}
           <Link
             to={`/reviews/${review.review_id}`}
             className={
-              isFullPageReview || isCompleteDesc(review.review_body)
+              isFullPageReview || isCompleteReview(review.review_body)
                 ? 'hidden'
                 : 'viewMoreLink'
             }
