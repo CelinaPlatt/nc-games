@@ -75,9 +75,21 @@
 .buttons button {
   display: flex;
   align-content: center;
-
   background-color: rgba(255, 255, 255, 0);
   border: 0;
+}
+
+.reviewButtons {
+  text-align: left;
+  width:100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.reviewButtons button{
+  border: none;
+  background: none;
+  margin-left: 15px;
+  margin-right:10px;
 }
 
 @media only screen and (min-width: 400px) {

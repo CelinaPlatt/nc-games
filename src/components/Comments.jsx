@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FaCommentAlt } from 'react-icons/fa';
+
 import { getCommentsByReviewId } from '../utils/Api';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -10,11 +10,8 @@ import { addUserAvatar } from '../utils/DataManipulation';
 import VoteCounter from './VoteCounter';
 import NewComment from './NewComment';
 
-const Comments = ({ count, reviewId }) => {
-  const { review_id } = useParams();
-  const isFullPageReview = review_id;
-
-  const [isOpen, setIsOpen] = useState(false);
+const Comments = ({ isOpen,review_id,isFullPageReview }) => {
+  
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(null);
 
@@ -24,16 +21,12 @@ const Comments = ({ count, reviewId }) => {
 
   const commentsWithAvatar = addUserAvatar(users, comments);
 
-  const toggleIsOpen = () => {
-    isFullPageReview && setIsOpen((isOpen) => !isOpen);
-  };
-
   useEffect(() => {
     async function fetchComments() {
       try {
         setErr(null);
         setLoading(true);
-        const commentsFromApi = await getCommentsByReviewId(reviewId);
+        const commentsFromApi = await getCommentsByReviewId(review_id);
         setComments(commentsFromApi);
         setLoading(false);
       } catch (err) {
@@ -42,28 +35,14 @@ const Comments = ({ count, reviewId }) => {
       }
     }
     fetchComments();
-  }, [reviewId]);
+  }, [review_id]);
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
   if (err) return <p className="errMsg">{err}</p>;
 
   return (
     <div>
-      {isFullPageReview ? (
-        <button onClick={toggleIsOpen}>
-          <FaCommentAlt />
-          <span className="commentCount">{count} </span>
-          {<span className="labelHideComments">hide comments</span>}
-        </button>
-      ) : (
-        <Link to={`/reviews/${reviewId}`}>
-          <button onClick={toggleIsOpen}>
-            <FaCommentAlt />
-            <span className="commentCount">{count} </span>
-          </button>
-        </Link>
-      )}
-      {isOpen || isFullPageReview && (
+      {isOpen || isFullPageReview ? (
         <>
           <section className="commentsContainer">
             {commentsWithAvatar.map((comment) => {
@@ -82,7 +61,10 @@ const Comments = ({ count, reviewId }) => {
                       <p className="commentAvatarP">{comment.author}</p>
                       <p>{comment.body}</p>
                       <button className="commentLikesBtn">
-                      <VoteCounter votes={comment.votes} comment_id={comment.comment_id}/>
+                        <VoteCounter
+                          votes={comment.votes}
+                          comment_id={comment.comment_id}
+                        />
                       </button>
                     </div>
                   </div>
@@ -90,9 +72,9 @@ const Comments = ({ count, reviewId }) => {
               );
             })}
           </section>
-          <NewComment/>
+          <NewComment />
         </>
-      )}
+      ) : null}
     </div>
   );
 };
