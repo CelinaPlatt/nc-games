@@ -5,7 +5,6 @@ import { postComment } from '../utils/Api';
 
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import { CircularProgress } from '@mui/material';
 
 const NewComment = () => {
   const { review_id } = useParams();
@@ -28,8 +27,6 @@ const NewComment = () => {
           review_id,
           newCommentInput
         );
-      
-        console.log();
         setLoading(false);
         // setNewCommentInput('');
       } catch (err) {

@@ -1,9 +1,12 @@
 import '../styles/Profile.css';
 import { FaEdit, FaRunning } from 'react-icons/fa';
 import { Redirect } from 'react-router';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/User';
 
-const Profile = ({ user,setUser }) => {
-  
+const Profile = () => {
+  const { user, setUser } = useContext(UserContext);
+
   if (user === {}) {
     return <Redirect to={'/login'} />;
   }

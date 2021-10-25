@@ -7,14 +7,17 @@ import { Redirect } from 'react-router';
 
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import { UserContext } from '../contexts/User';
 
-const Login = ({user,setUser}) => {
+const Login = () => {
   const [usernameInput, setUsernameInput] = useState('');
   const [nameInput, setNameInput] = useState('');
   // const [user, setUser] = useState('');
   const [usernameErr, setUsernameErr] = useState('');
   const [nameErr, setNameErr] = useState('');
   const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
+
+  const {user,setUser} = useContext(UserContext);
 
   const { users } = useContext(UsersContext);
   console.log(user, 'user in profile');
