@@ -14,10 +14,10 @@ const Login = ({user,setUser}) => {
   // const [user, setUser] = useState('');
   const [usernameErr, setUsernameErr] = useState('');
   const [nameErr, setNameErr] = useState('');
-  const [loggedInUser, setLoggedInUser] = useState('');
+  const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
 
   const { users } = useContext(UsersContext);
-  console.log(users, 'users');
+  console.log(user, 'user in profile');
 
   const validateUserName = () => {
     setUsernameErr('');
@@ -47,7 +47,7 @@ const Login = ({user,setUser}) => {
     e.preventDefault();
 
     if (user.name === nameInput) {
-      setLoggedInUser(user);
+      setIsLoginSuccessful(true);
     } else {
       setNameErr('Oops! wrong username or name');
       setUser('');
@@ -57,12 +57,15 @@ const Login = ({user,setUser}) => {
 
   };
 
-  // console.log(loggedInUser, 'loggedinuser');
-  // console.log(user, '<<<user');
-  // console.log(usernameInput, '<<username');
-  // console.log(nameInput, '<<name');
 
-if(loggedInUser){
+  console.log(isLoginSuccessful, 'isLoginSuccessful');
+  console.log(user, '<<<user');
+
+  console.log(usernameInput, '<<username');
+  console.log(nameInput, '<<name');
+
+if(isLoginSuccessful){
+  // localStorage.setItem('loggedInUser',JSON.stringify(user));
   return <Redirect to={{pathname:`/${user.username}/profile`,state:{user:user}}} />
 }
 

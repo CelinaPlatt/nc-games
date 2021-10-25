@@ -1,21 +1,7 @@
 import '../styles/Profile.css';
 import { FaEdit } from 'react-icons/fa';
-import { useParams } from 'react-router';
-import { useContext } from 'react';
-import { UsersContext } from '../contexts/Users';
 
 const Profile = ({ user }) => {
-  // const {username,name,avatar_url} = user;
-  const { username } = useParams();
-  // this.props.location.state.id
-  // console.log(props,"<<props")
-
-  // const {users}= useContext(UsersContext);
-
-  // const user = users.filter((user)=>{
-  //   return user.username === username;
-  // })
-  // console.log(user,'<<<user in profile')
 
   return (
     <header className="profileHeader">
