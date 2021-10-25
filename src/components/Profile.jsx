@@ -1,7 +1,12 @@
 import '../styles/Profile.css';
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaRunning } from 'react-icons/fa';
+import { Redirect } from 'react-router';
 
-const Profile = ({ user }) => {
+const Profile = ({ user,setUser }) => {
+  
+  if (user === {}) {
+    return <Redirect to={'/login'} />;
+  }
 
   return (
     <header className="profileHeader">
@@ -17,6 +22,9 @@ const Profile = ({ user }) => {
         <section className="profileCard_details">
           <p>{user.username}</p>
           <FaEdit className="editIcon" />
+          <button>
+            <FaRunning />
+          </button>
         </section>
       </section>
     </header>
