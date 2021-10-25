@@ -13,7 +13,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 
 function App() {
-  const [user] = useState({
+  const [user,setUser] = useState({
     username: 'jessjelly',
     name: 'Jess Jelly',
     avatar_url:
@@ -32,11 +32,12 @@ function App() {
 
           <Route exact path="/:username/profile">
             <Profile user={user} />
+            {/* <Profile /> */}
             <ReviewList />
           </Route>
 
           <Route exact path="/login">
-            <Login />
+            <Login user={user} setUser={setUser} />
             {/* Login  loginInputs ={inputs}*/}
           </Route>
 

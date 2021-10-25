@@ -8,10 +8,10 @@ import { Redirect } from 'react-router';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 
-const Login = () => {
+const Login = ({user,setUser}) => {
   const [usernameInput, setUsernameInput] = useState('');
   const [nameInput, setNameInput] = useState('');
-  const [user, setUser] = useState('');
+  // const [user, setUser] = useState('');
   const [usernameErr, setUsernameErr] = useState('');
   const [nameErr, setNameErr] = useState('');
   const [loggedInUser, setLoggedInUser] = useState('');
@@ -31,6 +31,8 @@ const Login = () => {
       setUsernameErr(`Oops that user isn't register with us yet`);
     }
   };
+
+  console.log(user,"<user in login")
 
   const resetErr = () => {
     if (usernameErr) {
@@ -55,15 +57,14 @@ const Login = () => {
 
   };
 
-  console.log(loggedInUser, 'loggedinuser');
-  console.log(user, '<<<user');
-  console.log(usernameInput, '<<username');
-  console.log(nameInput, '<<name');
+  // console.log(loggedInUser, 'loggedinuser');
+  // console.log(user, '<<<user');
+  // console.log(usernameInput, '<<username');
+  // console.log(nameInput, '<<name');
 
-
-  // if (loggedInUser) {
-  //   return <Redirect to="/profile" user={user} />;
-  // }
+if(loggedInUser){
+  return <Redirect to={{pathname:`/${user.username}/profile`,state:{user:user}}} />
+}
 
   return (
     <div className="loginCard">

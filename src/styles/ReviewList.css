@@ -95,10 +95,11 @@
 @media only screen and (min-width: 400px) {
   .reviewList {
     flex-direction: row;
+    width:50vw;
   }
 
   .reviewCard {
-    width: 30%;
+    width: 80%;
     margin: 10px auto;
   }
 
