@@ -10,8 +10,7 @@ import { addUserAvatar } from '../utils/DataManipulation';
 import VoteCounter from './VoteCounter';
 import NewComment from './NewComment';
 
-const Comments = ({ isOpen,review_id,isFullPageReview }) => {
-  
+const Comments = ({ isOpen, review_id, isFullPageReview }) => {
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(null);
 
@@ -44,6 +43,7 @@ const Comments = ({ isOpen,review_id,isFullPageReview }) => {
     <div>
       {isOpen || isFullPageReview ? (
         <>
+          <NewComment />
           <section className="commentsContainer">
             {commentsWithAvatar.map((comment) => {
               return (
@@ -72,7 +72,6 @@ const Comments = ({ isOpen,review_id,isFullPageReview }) => {
               );
             })}
           </section>
-          <NewComment />
         </>
       ) : null}
     </div>
