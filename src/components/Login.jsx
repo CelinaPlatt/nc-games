@@ -22,6 +22,9 @@ const Login = () => {
   const { users } = useContext(UsersContext);
   console.log(user, 'user in profile');
 
+
+ 
+
   const validateUserName = () => {
     setUsernameErr('');
     const userMatch = users.filter((user) => {
@@ -31,7 +34,7 @@ const Login = () => {
     if (userMatched) {
       setUser(userMatched);
     } else {
-      setUsernameErr(`Oops that user isn't register with us yet`);
+     setUsernameErr(`Oops that user isn't register with us yet`);
     }
   };
 
@@ -50,10 +53,10 @@ const Login = () => {
     e.preventDefault();
 
     if (user.name === nameInput) {
-      setIsLoginSuccessful(true);
+     setIsLoginSuccessful(true);
     } else {
       setNameErr('Oops! wrong username or name');
-      setUser('');
+      setUser({});
     }
     setUsernameInput('');
     setNameInput('');
@@ -68,8 +71,9 @@ const Login = () => {
   console.log(nameInput, '<<name');
 
 if(isLoginSuccessful){
-  // localStorage.setItem('loggedInUser',JSON.stringify(user));
-  return <Redirect to={{pathname:`/${user.username}/profile`,state:{user:user}}} />
+  localStorage.setItem('loggedInUser',JSON.stringify(user));
+  return <Redirect to={`/${user.username}/profile`}/>
+
 }
 
   return (

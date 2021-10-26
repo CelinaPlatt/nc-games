@@ -41,9 +41,9 @@ const Comments = ({ isOpen, review_id, isFullPageReview }) => {
 
   return (
     <div>
-      {isOpen || isFullPageReview ? (
+      {isOpen || isFullPageReview ?  (
         <>
-          <NewComment />
+          <NewComment isOpen={isOpen}/>
           <section className="commentsContainer">
             {commentsWithAvatar.map((comment) => {
               return (

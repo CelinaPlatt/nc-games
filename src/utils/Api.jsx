@@ -74,7 +74,7 @@ export const getUsers = async () => {
 };
 
 export const postComment = async (username, review_id, body) => {
-  const { data } = await gamesApi.post(`/${review_id}/comments`, {
+  const { data } = await gamesApi.post(`reviews/${review_id}/comments`, {
     username: username,
     body: body,
   });
