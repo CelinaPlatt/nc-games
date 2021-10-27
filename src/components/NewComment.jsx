@@ -15,24 +15,25 @@ const NewComment = ({ isOpen }) => {
 
   const [postedComments, setPostedComments] = useState([]);
   const [err, setErr] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [isCommentFocus, setIsCommentFocus] = useState(false);
 
   const { user } = useContext(UserContext);
 
-  console.log(postedComments, '<<<input');
+  console.log(newCommentInput, '<<<input');
 
   const handlePost = async (e) => {
     e.preventDefault();
     if (newCommentInput) {
       try {
-        setLoading(true);
+        // setLoading(true);
         const postedCommentFromApi = await postComment(
           user.username,
           review_id,
           newCommentInput
         );
         setPostedComments([...postedComments, postedCommentFromApi]);
-        setLoading(false);
+        // setLoading(false);
         // setNewCommentInput('');
       } catch (err) {
         setErr('Oops! Something went wrong.Try again');
@@ -44,9 +45,9 @@ const NewComment = ({ isOpen }) => {
     }
   };
 
-  // if (user && isOpen) {
-  //   return <Redirect to={'/login'} />;
-  // }
+  if (!user.username) {
+    return <Redirect to={'/login'} />;
+  }
   return (
     <>
       <form onSubmit={handlePost}>
@@ -68,6 +69,7 @@ const NewComment = ({ isOpen }) => {
             <div className="commentBody">
               <p className="commentAvatarP">{user.username}</p>
               <textarea
+                className={newCommentInput === '' ? 'small-box' : 'large-box'}
                 type="text"
                 name="commentBody"
                 id="commentBody"
@@ -77,6 +79,7 @@ const NewComment = ({ isOpen }) => {
                 onChange={(e) => {
                   setNewCommentInput(e.target.value);
                 }}
+            
               />
             </div>
           </div>

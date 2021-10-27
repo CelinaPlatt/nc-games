@@ -9,7 +9,7 @@ import { FaCommentAlt } from 'react-icons/fa';
 
 const Review = ({ review }) => {
   const { review_id } = useParams();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 console.log(isOpen,'ISoPEN')
 console.log(review_id,'review_Id')
   let isFullPageReview = false;
@@ -17,7 +17,6 @@ console.log(review_id,'review_Id')
   if (review_id) {
     isFullPageReview = true;
   }
-
 
   console.log(isFullPageReview, '<<<fullpage');
 
@@ -72,23 +71,23 @@ console.log(review_id,'review_Id')
       </section>
       <section className="reviewButtons">
         {isFullPageReview ? (
-          <button onClick={toggleIsOpen}>
+          <button onClick={()=>{toggleIsOpen()}}>
             <FaCommentAlt />
             <span className="commentCount">{review.comment_count} </span>
             {isOpen ?<span className="labelHideComments">hide comments</span> : null}
           </button>
         ) : (
           <Link to={`/reviews/${review.review_id}`}>
-            <button onClick={toggleIsOpen}>
+            {/* <button onClick={toggleIsOpen}> */}
               <FaCommentAlt />
               <span className="commentCount">{review.comment_count} </span>
-            </button>
+            {/* </button> */}
           </Link>
         )}
         <VoteCounter votes={review.votes} review_id={review.review_id} />
       </section>
-
-      <Comments isFullPageReview={isFullPageReview} isOpen={isOpen} review_id={review.review_id} />
+{isFullPageReview && <Comments isFullPageReview={isFullPageReview} isOpen={isOpen} review_id={review.review_id} /> }
+      
     </section>
   );
 };

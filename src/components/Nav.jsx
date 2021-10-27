@@ -16,7 +16,8 @@ const Nav = () => {
         <CategoryMenu nav={true} />
       </Expandable>
       <Link to="/">HOME</Link>
-      <Link to={`/${username}/profile`}>
+      
+      <Link to={!username ? '/login':`/${username}/profile` }>
         <img
           className="nav__profileImg"
           src={avatar ? avatar : '/images/pexels-cottonbro-4569857.jpg'}

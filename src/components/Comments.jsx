@@ -41,7 +41,7 @@ const Comments = ({ isOpen, review_id, isFullPageReview }) => {
 
   return (
     <div>
-      {isOpen || isFullPageReview ?  (
+      {isOpen &&  (
         <>
           <NewComment isOpen={isOpen}/>
           <section className="commentsContainer">
@@ -60,12 +60,12 @@ const Comments = ({ isOpen, review_id, isFullPageReview }) => {
                     <div className="commentBody">
                       <p className="commentAvatarP">{comment.author}</p>
                       <p>{comment.body}</p>
-                      <button className="commentLikesBtn">
+                      <div className="commentLikesBtn">
                         <VoteCounter
                           votes={comment.votes}
                           comment_id={comment.comment_id}
                         />
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </section>
@@ -73,7 +73,7 @@ const Comments = ({ isOpen, review_id, isFullPageReview }) => {
             })}
           </section>
         </>
-      ) : null}
+      )}
     </div>
   );
 };

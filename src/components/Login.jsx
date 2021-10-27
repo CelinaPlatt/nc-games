@@ -8,6 +8,7 @@ import { Redirect } from 'react-router';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import { UserContext } from '../contexts/User';
+import { useHistory } from 'react-router';
 
 const Login = () => {
   const [usernameInput, setUsernameInput] = useState('');
@@ -17,13 +18,12 @@ const Login = () => {
   const [nameErr, setNameErr] = useState('');
   const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
 
-  const {user,setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const { users } = useContext(UsersContext);
   console.log(user, 'user in profile');
 
-
- 
+  const history = useHistory();
 
   const validateUserName = () => {
     setUsernameErr('');
@@ -34,11 +34,11 @@ const Login = () => {
     if (userMatched) {
       setUser(userMatched);
     } else {
-     setUsernameErr(`Oops that user isn't register with us yet`);
+      setUsernameErr(`Oops that user isn't register with us yet`);
     }
   };
 
-  console.log(user,"<user in login")
+  console.log(user, '<user in login');
 
   const resetErr = () => {
     if (usernameErr) {
@@ -53,16 +53,14 @@ const Login = () => {
     e.preventDefault();
 
     if (user.name === nameInput) {
-     setIsLoginSuccessful(true);
+      setIsLoginSuccessful(true);
     } else {
       setNameErr('Oops! wrong username or name');
       setUser({});
     }
     setUsernameInput('');
     setNameInput('');
-
   };
-
 
   console.log(isLoginSuccessful, 'isLoginSuccessful');
   console.log(user, '<<<user');
@@ -70,11 +68,10 @@ const Login = () => {
   console.log(usernameInput, '<<username');
   console.log(nameInput, '<<name');
 
-if(isLoginSuccessful){
-  localStorage.setItem('loggedInUser',JSON.stringify(user));
-  return <Redirect to={`/${user.username}/profile`}/>
-
-}
+  if (isLoginSuccessful) {
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+    history.push(`/${user.username}/profile`);
+  }
 
   return (
     <div className="loginCard">
