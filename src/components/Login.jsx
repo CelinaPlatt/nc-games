@@ -26,25 +26,34 @@ const Login = () => {
   const history = useHistory();
 
   const validateUserName = () => {
+    console.log('im validating username');
+    setUser({
+      username: '',
+      name: '',
+      avatar_url: '',
+    });
     setUsernameErr('');
     const userMatch = users.filter((user) => {
       return usernameInput === user.username;
     });
     const userMatched = userMatch[0];
-    if (userMatched) {
+    if (userMatched && userMatched.username) {
+      console.log('im a match');
       setUser(userMatched);
     } else {
+      console.log('im not a match');
       setUsernameErr(`Oops that user isn't register with us yet`);
     }
   };
 
-  console.log(user, '<user in login');
-
-  const resetErr = () => {
+  const resetUserNameErr = () => {
     if (usernameErr) {
       setUsernameErr('');
     }
-    if (nameErr) {
+  };
+
+  const resetNameErr = () => {
+    if (usernameErr) {
       setNameErr('');
     }
   };
@@ -63,10 +72,14 @@ const Login = () => {
   };
 
   console.log(isLoginSuccessful, 'isLoginSuccessful');
-  console.log(user, '<<<user');
+  // console.log(user, '<<<user');
 
   console.log(usernameInput, '<<username');
   console.log(nameInput, '<<name');
+
+  console.log(user, '<user in login');
+  console.log(usernameErr, 'username err');
+  console.log(nameErr, 'username err');
 
   if (isLoginSuccessful) {
     localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -78,7 +91,11 @@ const Login = () => {
       <form className="loginForm" onSubmit={handleSubmit}>
         <img
           className="loginImg"
-          src={user ? user.avatar_url : '/images/pexels-cottonbro-4569857.jpg'}
+          src={
+            !user.username || usernameErr
+              ? '/images/pexels-cottonbro-4569857.jpg'
+              : user.avatar_url
+          }
           alt="username"
           onError={(e) => {
             e.target.src = '/images/pexels-jan-kopřiva-5800065.jpg';
@@ -96,7 +113,7 @@ const Login = () => {
               setUsernameInput(e.target.value);
             }}
             onBlur={validateUserName}
-            onFocus={resetErr}
+            onFocus={resetUserNameErr}
           />
           {usernameErr ? (
             <Box sx={{ width: '100%' }}>
@@ -113,7 +130,7 @@ const Login = () => {
             onChange={(e) => {
               setNameInput(e.target.value);
             }}
-            onFocus={resetErr}
+            onFocus={resetNameErr}
           />
           {nameErr ? (
             <Box sx={{ width: '100%' }}>
@@ -126,7 +143,7 @@ const Login = () => {
         <p>Don't have a username yet?</p>
 
         <Link to="/register">
-          <button className="registerBtn" onClick={resetErr}>
+          <button className="registerBtn">
             Register
           </button>
         </Link>

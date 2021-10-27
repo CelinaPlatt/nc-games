@@ -27,17 +27,17 @@ export const addUserAvatar = (users, comments) => {
   return comments;
 };
 
-export const addUserAvatarToReviews = (users, obj, prop) => {
-  for (let element of obj) {
-    const author = element[prop];
+export const addUserAvatarToReviews = (users, reviews) => {
+  for (let review of reviews) {
+    const author = review.owner;
 
     for (let user of users) {
       const username = user.username;
       if (author === username) {
-        element.avatar_url = user.avatar_url;
+        review.avatar_url = user.avatar_url;
       }
     }
   }
 
-  return obj;
+  return reviews;
 };

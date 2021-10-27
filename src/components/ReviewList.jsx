@@ -18,7 +18,7 @@ const ReviewList = () => {
 
   const { reviews, loading, err } = useReviews(username, review_id, params);
 
-  const reviewsWithAvatar = addUserAvatarToReviews(users,reviews,'owner');
+  const reviewsWithAvatar = addUserAvatarToReviews(users,reviews);
 
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
