@@ -3,11 +3,24 @@ import { FaEdit, FaRunning } from 'react-icons/fa';
 import { Redirect } from 'react-router';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/User';
+import { useHistory } from 'react-router';
 
-const Profile = ({username}) => {
+const Profile = ({ username }) => {
   const { user, setUser } = useContext(UserContext);
 
-  // if (!username) {
+  const history = useHistory();
+
+  const handleLogOut = () => {
+    setUser({
+      username: '',
+      name: '',
+      avatar_url: '',
+    });
+    localStorage.removeItem('loggedInUser');
+    history.push('/login');
+  };
+
+  // if (!user.username) {
   //   return <Redirect to={'/login'} />;
   // }
 
@@ -26,7 +39,11 @@ const Profile = ({username}) => {
           <p>{user.username}</p>
           <FaEdit className="editIcon" />
           <button>
-            <FaRunning />
+            <FaRunning
+              onClick={() => {
+                handleLogOut();
+              }}
+            />
           </button>
         </section>
       </section>
