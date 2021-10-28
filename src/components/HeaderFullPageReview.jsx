@@ -8,7 +8,12 @@ const HeaderFullPageReview = () => {
 
   const { review,loading,err } = useReviewById(review_id);
 
-
+if(loading){
+  return <p>Loading</p>
+}
+if(err){
+  return <p>{err}</p>
+}
   return (
     <header className="header">
       <h2>{review.title}</h2>

@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { getReviewById, getReviews, getReviewsByUser } from "../utils/Api";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getReviewById, getReviews, getReviewsByUser } from '../utils/Api';
 
-const useReviews = (username,review_id,params) => {
+const useReviews = (username, review_id, category) => {
   const [reviews, setReviews] = useState([]);
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -17,8 +17,10 @@ const useReviews = (username,review_id,params) => {
           reviewsFromApi = await getReviewsByUser(username);
         } else if (review_id) {
           reviewsFromApi = await getReviewById(review_id);
+        } else if (category) {
+          reviewsFromApi = await getReviews(category);
         } else {
-          reviewsFromApi = await getReviews(params);
+          reviewsFromApi = await getReviews();
         }
         setReviews(reviewsFromApi);
         setLoading(false);
@@ -28,9 +30,9 @@ const useReviews = (username,review_id,params) => {
       }
     }
     fetchReviews();
-  }, [username, review_id]);
+  }, [username, review_id, category]);
 
-  return {reviews,loading,err};
+  return { reviews, loading, err };
 };
 
 export default useReviews;

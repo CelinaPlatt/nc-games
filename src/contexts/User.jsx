@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react';
-import { getUsers } from '../utils/Api';
 import { useEffect } from 'react';
 
 export const UserContext = createContext();

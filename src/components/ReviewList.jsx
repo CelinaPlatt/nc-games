@@ -16,7 +16,7 @@ const ReviewList = () => {
 
   if (category) params.category = category;
 
-  const { reviews, loading, err } = useReviews(username, review_id, params);
+  const { reviews, loading, err } = useReviews(username, review_id, category);
 
   const reviewsWithAvatar = addUserAvatarToReviews(users,reviews);
 

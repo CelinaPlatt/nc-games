@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { UsersContext } from '../contexts/Users';
-import '../styles/Login.css';
-import { Redirect } from 'react-router';
+// import { useContext } from 'react';
+// import { useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import { UsersContext } from '../contexts/Users';
+// import '../styles/Login.css';
+// import { Redirect } from 'react-router';
 
-import Box from '@mui/material/Box';
-import Alert from '@mui/material/Alert';
+// import Box from '@mui/material/Box';
+// import Alert from '@mui/material/Alert';
 
 const Register = () => {
   // const [usernameInput, setUsernameInput] = useState('');

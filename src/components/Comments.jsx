@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import { getCommentsByReviewId } from '../utils/Api';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import '../styles/Comments.css';
 import { UsersContext } from '../contexts/Users';
 import { useContext } from 'react/cjs/react.development';

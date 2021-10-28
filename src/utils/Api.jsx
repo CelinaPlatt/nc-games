@@ -24,7 +24,11 @@ export const getCategoryDesc = async (categorySlug) => {
   return categoryDesc;
 };
 
-export const getReviews = async (params) => {
+export const getReviews = async (category) => {
+  let params = {
+    sort_by: 'created_at',
+  };
+  if (category) params.category = category;
   const { data } = await gamesApi.get('/reviews', {
     params: { ...params },
   });
