@@ -15,20 +15,25 @@ body {
 }
 /* ------------POSITION-------------- */
 .reviewList {
-  z-index:10;
+  z-index: 10;
   position: relative;
   top: -25px;
 }
 
 .navBarMenu {
-  z-index:11;
-  position:absolute;
-  top:10vh;
+  z-index: 11;
+  position: absolute;
+  top: 10vh;
   left: 0;
 }
 
 .navBarMenu {
   z-index: 1000;
+}
+.errGif {
+  height: 90vh;
+  width: auto;
+  margin: auto;
 }
 /* ------------FONT-------------- */
 a {

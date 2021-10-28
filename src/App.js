@@ -11,14 +11,14 @@ import HeaderUserReviews from './components/HeaderUserReviews';
 import HeaderFullPageReview from './components/HeaderFullPageReview';
 import Login from './components/Login';
 import Register from './components/Register';
-import {UserProvider} from './contexts/User'
+import { UserProvider } from './contexts/User';
 
 function App() {
   return (
     <UserProvider>
       <UsersProvider>
         <BrowserRouter>
-          <Nav/>
+          <Nav />
           <Switch>
             <Route exact path="/">
               <CategoryMenu />
@@ -26,7 +26,7 @@ function App() {
             </Route>
 
             <Route exact path="/:username/profile">
-              <Profile/>
+              <Profile />
               <ReviewList />
             </Route>
 
@@ -59,6 +59,13 @@ function App() {
 
             <Route exact path="editor/reviews/:review_id">
               {/* Review */}
+            </Route>
+            <Route exact path="/:notaccountedfor">
+              <img
+                className="errGif"
+                src="/images/404-error.gif"
+                alt="Not Found"
+              />
             </Route>
           </Switch>
         </BrowserRouter>

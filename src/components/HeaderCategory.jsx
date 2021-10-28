@@ -9,7 +9,7 @@ const HeaderCategory = () => {
    const {categoryDesc,err,loading} =useCategoryDesc(category);
    
   if (loading) return <p className="loadingMsg">Loading...</p>;
-  if (err) return <p className="errMsg">{err}</p>;
+  if (err) return <p></p>;
 
   return (
   

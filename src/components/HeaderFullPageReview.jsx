@@ -12,7 +12,7 @@ if(loading){
   return <p>Loading</p>
 }
 if(err){
-  return <p>{err}</p>
+  return <p></p>
 }
   return (
     <header className="header">
