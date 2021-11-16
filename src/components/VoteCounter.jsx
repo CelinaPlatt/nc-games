@@ -4,6 +4,7 @@ import { patchCommentsVotes, patchReviewVotes } from '../utils/Api';
 
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
 
 const VoteCounter = ({ votes, review_id, comment_id }) => {
   const [votesChange, setVotesChange] = useState(0);
@@ -30,9 +31,9 @@ const VoteCounter = ({ votes, review_id, comment_id }) => {
 
   return (
     <>
-      <button id="votesBtn" onClick={handleVote}>
-        <FaRegHeart /> {Number(votes) + votesChange}
-      </button>
+      <Button  size="small" id="votesBtn" onClick={handleVote}>
+        <FaRegHeart /> <span> {Number(votes) + votesChange} </span>
+      </Button>
       {isError ? (
         <Box sx={{ width: '100%' }}>
           <Alert severity="error">

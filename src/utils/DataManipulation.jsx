@@ -3,7 +3,7 @@ export const trimReviewBody = (reviewBody) => {
   const bodyArr = reviewBody.split(' ');
   const trimmedArr = [];
   for (let word of bodyArr) {
-    if (charCount < 100) {
+    if (charCount < 95) {
       charCount = charCount + word.length;
       trimmedArr.push(word);
     }
