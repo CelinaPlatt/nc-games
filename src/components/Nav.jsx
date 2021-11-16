@@ -4,6 +4,8 @@ import CategoryMenu from './CategoryMenu';
 import Expandable from './Expandable';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/User';
+import Avatar from '@mui/material/Avatar';
+import { red } from '@mui/material/colors';
 
 const Nav = () => {
   const { user } = useContext(UserContext);
@@ -18,14 +20,11 @@ const Nav = () => {
       <Link to="/">HOME</Link>
       
       <Link to={!username ? '/login':`/${username}/profile` }>
-        <img
-          className="nav__profileImg"
-          src={avatar ? avatar : '/images/pexels-cottonbro-4569857.jpg'}
-          alt={username}
-          onError={(e) => {
-            e.target.src = '/images/pexels-jan-kopřiva-5800065.jpg';
-          }}
-        />
+      <Avatar
+            sx={{ bgcolor: red[500], width: 50, height: 50 }}
+            alt={username}
+            src={avatar}
+          />
       </Link>
     </nav>
   );
