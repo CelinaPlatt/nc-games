@@ -34,7 +34,7 @@ const ReviewList = () => {
   }
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
-  // if (err) return <p className="errMsg">{err}</p>;
+
   if (err)
     return <img className="errGif" src="/images/404-error.gif" alt={err} />;
 

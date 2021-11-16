@@ -31,8 +31,9 @@ const VoteCounter = ({ votes, review_id, comment_id }) => {
 
   return (
     <>
-      <Button  size="small" id="votesBtn" onClick={handleVote}>
-        <FaRegHeart /> <span> {Number(votes) + votesChange} </span>
+      <Button size="small" id="votesBtn" onClick={handleVote}>
+        <FaRegHeart />{' '}
+        <span className="btnSpan"> {Number(votes) + votesChange} </span>
       </Button>
       {isError ? (
         <Box sx={{ width: '100%' }}>
@@ -40,8 +41,8 @@ const VoteCounter = ({ votes, review_id, comment_id }) => {
             Oops! There's been an error.Try again later
           </Alert>
         </Box>
-        // Add css for error toast
-      ) : null}
+      ) : 
+      null}
     </>
   );
 };

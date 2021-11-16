@@ -7,12 +7,39 @@ import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/User';
+import { Link } from 'react-router-dom';
+
+import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import { Input } from '@mui/material';
+// import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import Avatar from '@mui/material/Avatar';
+// import IconButton from '@mui/material/IconButton';
+// import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { red } from '@mui/material/colors';
+// import { styled } from '@mui/material/styles';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import Collapse from '@mui/material/Collapse';
+// import { makeStyles } from '@material-ui/core';
+// import Input from '@mui/material/Input';
+import SendIcon from '@mui/icons-material/Send';
+import VoteCounter from './VoteCounter';
+import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+// import TextField from '@mui/material/TextField';
+
+const ariaLabel = { 'aria-label': 'description' };
 
 const NewComment = ({ isOpen }) => {
   const { review_id } = useParams();
 
   const [newCommentInput, setNewCommentInput] = useState('');
-
   const [postedComments, setPostedComments] = useState([]);
   const [err, setErr] = useState(false);
   // const [loading, setLoading] = useState(false);
@@ -21,8 +48,10 @@ const NewComment = ({ isOpen }) => {
   const { user } = useContext(UserContext);
 
   console.log(newCommentInput, '<<<input');
+  console.log(postedComments, 'postedComments');
 
   const handlePost = async (e) => {
+    console.log('submited');
     e.preventDefault();
     if (newCommentInput) {
       try {
@@ -34,7 +63,7 @@ const NewComment = ({ isOpen }) => {
         );
         setPostedComments([...postedComments, postedCommentFromApi]);
         // setLoading(false);
-        // setNewCommentInput('');
+        setNewCommentInput('');
       } catch (err) {
         setErr('Oops! Something went wrong.Try again');
 
@@ -50,59 +79,90 @@ const NewComment = ({ isOpen }) => {
   }
   return (
     <>
-      <form onSubmit={handlePost}>
-        {err && (
-          <Box sx={{ width: '100%' }}>
-            <Alert severity="error">{err}</Alert>
-          </Box>
-        )}
-        <section className="commentCard">
-          <div className="commentFlexContainer">
-            <img
-              className="commentAvatarImg"
-              src="user.avatar_url"
-              alt="user.username"
-              onError={(e) => {
-                e.target.src = '/images/pexels-jan-kopřiva-5800065.jpg';
-              }}
+      <div className="newCommentCard">
+        <Card className="review-card" sx={{ maxWidth: 280 }}>
+          <Link
+            className="linkToUserReviews"
+            to={`/users/${user.username}/reviews`}
+          >
+            <CardHeader
+              avatar={
+                <Avatar
+                  sx={{ bgcolor: red[500] }}
+                  alt={user.username}
+                  src={user.avatar_url}
+                />
+              }
+              title={user.username}
             />
-            <div className="commentBody">
-              <p className="commentAvatarP">{user.username}</p>
-              <textarea
-                className={newCommentInput === '' ? 'small-box' : 'large-box'}
-                type="text"
-                name="commentBody"
+          </Link>
+          <CardContent>
+            <form onSubmit={handlePost}>
+              {err && (
+                <Box sx={{ width: '100%' }}>
+                  <Alert severity="error">{err}</Alert>
+                </Box>
+              )}
+              <Input
+                placeholder="Write a comment"
+                inputProps={ariaLabel}
                 id="commentBody"
-                maxLength="600"
-                placeholder="Write a comment..."
                 value={newCommentInput}
                 onChange={(e) => {
                   setNewCommentInput(e.target.value);
                 }}
-            
               />
-            </div>
-          </div>
-          <button id="postBtn">POST</button>
-        </section>
-      </form>
+              <div className="postBtn">
+                <Button onClick={handlePost}>
+                  POST <SendIcon className="btnSpan" />
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+
       {postedComments.length !== 0
         ? postedComments.map((comment) => {
             return (
-              <section className="commentCard commentFlexContainer">
-                <img
-                  className="commentAvatarImg"
-                  src="user.avatar_url"
-                  alt="user.username"
-                  onError={(e) => {
-                    e.target.src = '/images/pexels-jan-kopřiva-5800065.jpg';
-                  }}
-                />
-                <div className="commentBody">
-                  <p className="commentAvatarP">{user.username}</p>
-                  <p>{comment.body}</p>
+              <>
+                <Card
+                  key={comment.comment_id}
+                  className="review-card"
+                  sx={{ maxWidth: 280 }}
+                >
+                  <Link
+                    className="linkToUserReviews"
+                    to={`/users/${comment.author}/reviews`}
+                  >
+                    <CardHeader
+                      avatar={
+                        <Avatar
+                          sx={{ bgcolor: red[500] }}
+                          alt={comment.author}
+                          src={comment.avatar_url}
+                        />
+                      }
+                      action={
+                        user.username === comment.author && (
+                          <IconButton aria-label="settings">
+                            <DeleteIcon />
+                          </IconButton>
+                        )
+                      }
+                      title={comment.author}
+                      subheader={comment.body}
+                    />
+                  </Link>
+                </Card>
+                <div className="commentLikesBtn">
+                  <VoteCounter
+                    className
+                    votes={comment.votes}
+                    comment_id={comment.comment_id}
+                  />
                 </div>
-              </section>
+              </>
             );
           })
         : null}
