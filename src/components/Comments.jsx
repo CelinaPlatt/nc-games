@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getCommentsByReviewId } from '../utils/Api';
 import '../styles/Comments.css';
 import { UsersContext } from '../contexts/Users';
-import { useContext } from 'react/cjs/react.development';
+import { useContext } from 'react';
 import { addUserAvatar } from '../utils/DataManipulation';
 import VoteCounter from './VoteCounter';
 import NewComment from './NewComment';
