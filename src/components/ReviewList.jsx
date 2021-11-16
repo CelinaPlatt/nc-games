@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import Review from './Review';
 import useReviews from '../hooks/useReviews';
 import { addUserAvatarToReviews } from '../utils/DataManipulation';
-import { useContext } from 'react/cjs/react.development';
+import { useContext } from 'react';
 import { UsersContext } from '../contexts/Users';
 
 const ReviewList = () => {

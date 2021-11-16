@@ -63,7 +63,7 @@ const Review = ({ review }) => {
 
   return (
     <>
-      <Link to={`/reviews/${review.review_id}`}>
+      {/* <Link to={`/reviews/${review.review_id}`}> */}
         <Card className="review-card" sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
@@ -146,7 +146,7 @@ const Review = ({ review }) => {
             </Collapse>
           )}
         </Card>
-      </Link>
+      {/* </Link> */}
       
     </>
   );
