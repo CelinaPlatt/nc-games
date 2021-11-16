@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const Profile = () => {
   const { username } = useParams();
@@ -55,7 +56,7 @@ const Profile = () => {
               <IconButton aria-label="settings">
                 <EditIcon
                   onClick={() => {
-                    handleLogOut();
+                    
                   }}
                 />
               </IconButton>
@@ -74,6 +75,14 @@ const Profile = () => {
           </section>
         </section>
       </section>
+      <div className="newReviewIcon">
+        <AddCircleIcon
+          style={{ color: '#B2A41E', width: '100px', height: '100px' }}
+          onClick={() => {
+            history.push('/new-review');
+          }}
+        />
+      </div>
     </header>
   );
 };

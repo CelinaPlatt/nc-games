@@ -8,7 +8,7 @@
 .avatar {
   margin: 10px auto;
 }
-.button{
+.button {
   display: flex;
   flex-direction: column;
 }
@@ -26,9 +26,8 @@
   border-radius: 25px;
   padding: 20px;
 }
-.profileCard_details{
+.profileCard_details {
   margin: 25px;
- 
 }
 
 .rightMargin {
@@ -40,9 +39,23 @@
 .flexContainer {
   display: flex;
   justify-content: space-around;
-  width:100%;
-
+  width: 100%;
 }
+.newReviewIcon {
+  z-index: 1000;
+  position: relative;
+  top: 80px;
+  align-content: center;
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 0 auto;
+}
+.newReviewFormContainer{
+  text-align: center;
+}
+
 
 @media only screen and (min-width: 800px) {
   .profileCard {
@@ -50,9 +63,8 @@
     justify-content: center;
     width: 40vw;
     align-content: center;
-   
   }
-   h1{
-     font-size: 28px;
-   }
+  h1 {
+    font-size: 28px;
+  }
 }
