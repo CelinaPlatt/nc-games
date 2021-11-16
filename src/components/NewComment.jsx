@@ -2,34 +2,21 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router';
 import { useState } from 'react/cjs/react.development';
 import { postComment } from '../utils/Api';
-
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/User';
 import { Link } from 'react-router-dom';
-
 import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
-// import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
-// import IconButton from '@mui/material/IconButton';
-// import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { red } from '@mui/material/colors';
-// import { styled } from '@mui/material/styles';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import Collapse from '@mui/material/Collapse';
-// import { makeStyles } from '@material-ui/core';
-// import Input from '@mui/material/Input';
 import SendIcon from '@mui/icons-material/Send';
 import VoteCounter from './VoteCounter';
 import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 // import TextField from '@mui/material/TextField';

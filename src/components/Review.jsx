@@ -23,7 +23,6 @@ import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -56,8 +55,8 @@ const Review = ({ review }) => {
 
   return (
     <>
-      {/* <Link to={`/reviews/${review.review_id}`}> */}
-        <Card className="review-card" sx={{ maxWidth: 345 }}>
+      <div className="reviewCard">
+        <Card sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
             height="180"
@@ -66,6 +65,7 @@ const Review = ({ review }) => {
           />
           <CardContent>
             <Link
+              style={{ color: 'black' }}
               className="linkToUserReviews"
               to={`/users/${review.owner}/reviews`}
             >
@@ -88,15 +88,20 @@ const Review = ({ review }) => {
                 subheader={review.created_at}
               />{' '}
             </Link>
-            <Typography gutterBottom variant="h5" component="div">
-              {review.title}
-            </Typography>
-
+            <Link
+              style={{ color: 'black' }}
+              to={`/reviews/${review.review_id}`}
+            >
+              <Typography gutterBottom variant="h5" component="div">
+                {review.title}
+              </Typography>
+            </Link>
             <Typography variant="body2" color="text.secondary">
               {isFullPageReview || isCompleteReview(review.review_body)
                 ? review.review_body
                 : trimReviewBody(review.review_body) + ' ...'}
               <Link
+                style={{ color: 'black' }}
                 to={`/reviews/${review.review_id}`}
                 className={
                   isFullPageReview || isCompleteReview(review.review_body)
@@ -110,26 +115,28 @@ const Review = ({ review }) => {
           </CardContent>
           <CardActions>
             <VoteCounter votes={review.votes} review_id={review.review_id} />
-
-            <Button size="small">
-              <FaCommentAlt />
-              <span className="btnSpan">{review.comment_count} </span>
-              {isFullPageReview && (
-                <ExpandMore
-                  expand={expanded}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                >
-                  <ExpandMoreIcon />
-                </ExpandMore>
-              )}
-            </Button>
+            <Link
+              to={`/reviews/${review.review_id}`}
+            >
+              <Button size="small">
+                <FaCommentAlt />
+                <span className="btnSpan">{review.comment_count} </span>
+                {isFullPageReview && (
+                  <ExpandMore
+                    expand={expanded}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                  >
+                    <ExpandMoreIcon />
+                  </ExpandMore>
+                )}
+              </Button>
+            </Link>
           </CardActions>
           {isFullPageReview && (
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
                 <Comments
-            
                   isFullPageReview={isFullPageReview}
                   isOpen={expanded}
                   review_id={review.review_id}
@@ -139,7 +146,8 @@ const Review = ({ review }) => {
             </Collapse>
           )}
         </Card>
-      {/* </Link> */}  
+        {/* </Link> */}
+      </div>
     </>
   );
 };
