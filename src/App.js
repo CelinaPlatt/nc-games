@@ -13,13 +13,13 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { UserProvider } from './contexts/User';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
+import NewReview from './components/NewReview';
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#BC7D34',
-      contrastText:'black',
+      contrastText: 'black',
     },
     secondary: {
       main: '#52282f',
@@ -51,6 +51,10 @@ function App() {
 
               <Route exact path="/register">
                 <Register />
+              </Route>
+
+              <Route exact path="/new-review">
+                <NewReview />
               </Route>
 
               <Route exact path="/profile/editor">
@@ -86,7 +90,7 @@ function App() {
           </BrowserRouter>
         </UsersProvider>
       </UserProvider>
-      </ThemeProvider>
+    </ThemeProvider>
   );
 }
 
