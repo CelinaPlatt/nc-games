@@ -77,13 +77,14 @@ const Review = ({ review }) => {
                     src={review.avatar_url}
                   />
                 }
-                action={
-                  isUserOwner && (
-                    <IconButton aria-label="settings">
-                      <MoreVertIcon />
-                    </IconButton>
-                  )
-                }
+                // >>> Edit Review button
+                // action={
+                //   isUserOwner && (
+                //     <IconButton aria-label="settings">
+                //       <MoreVertIcon />
+                //     </IconButton>
+                //   )
+                // }
                 title={review.owner}
                 subheader={review.created_at}
               />{' '}

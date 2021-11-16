@@ -66,13 +66,14 @@ const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
                           src={comment.avatar_url}
                         />
                       }
-                      action={
-                        user.username === comment.author && (
-                          <IconButton aria-label="settings">
-                            <Delete />
-                          </IconButton>
-                        )
-                      }
+                      // >> Delete comment button
+                      // action={
+                      //   user.username === comment.author && (
+                      //     <IconButton aria-label="settings" onClick={}>
+                      //       <Delete />
+                      //     </IconButton>
+                      //   )
+                      // }
                       title={comment.author}
                       subheader={comment.body}
                     />

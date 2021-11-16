@@ -51,7 +51,7 @@ const Profile = () => {
         <section className="profileCard_details">
           <h1>{user.username.toUpperCase()}</h1>
           <section className="flexContainer">
-            <section className="button">
+            {/* <section className="button">
               <IconButton aria-label="settings">
                 <EditIcon
                   onClick={() => {
@@ -60,7 +60,7 @@ const Profile = () => {
                 />
               </IconButton>
               <span className="rightMargin">Edit</span>
-            </section>
+            </section> */}
             <section className="button">
               <IconButton aria-label="settings">
                 <LogoutIcon
