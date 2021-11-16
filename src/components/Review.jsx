@@ -22,14 +22,7 @@ import { red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-import { makeStyles } from '@material-ui/core';
 
-// const useStyles = makeStyles({
-//   btn: {
-//     fontSize: 60,
-//     backgroundColor: 'violet',
-//   },
-// });
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -63,8 +56,9 @@ const Review = ({ review }) => {
 
   return (
     <>
+    <div className='reviewCard'>
       <Link to={`/reviews/${review.review_id}`}>
-        <Card className="review-card" sx={{ maxWidth: 345 }}>
+        <Card  sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
             height="180"
@@ -147,6 +141,7 @@ const Review = ({ review }) => {
           )}
         </Card>
       </Link>
+      </div>
       
     </>
   );

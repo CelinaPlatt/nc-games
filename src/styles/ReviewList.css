@@ -2,12 +2,17 @@
 .hidden {
   display: none;
 }
-.review-card {
-  border-radius: 25px;
-  background-color: blue;
+
+.reviewCard {
+  background-color: transparent;
+  margin: 20px auto;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4); */
 }
 
 .reviewList {
+  z-index: 10;
+  position: relative;
+  top: -25px;
   width: 80vw;
   margin: 0 auto;
   padding: 15px 0;
@@ -21,93 +26,10 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
-.reviewCard {
-  width: 80%;
-  margin: 20px auto;
-  background-color: rgb(196, 196, 196);
-  align-content: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-}
-
-.reviewImg {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 10px 10px 0 0;
-}
-
-.reviewCard__avatar {
-  height: 25px;
-  width: auto;
-  border-radius: 25px;
-}
-
-.reviewAvatarImg {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 25px;
-}
-
-.reviewCard__details {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  padding: 20px 10px;
-  text-align: left;
-}
-
-.reviewCard__details p {
-  font-size: 14px;
-}
-
-.linkToUserReviews {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 10px;
-}
-
-.buttons button {
-  display: flex;
-  align-content: center;
-  background-color: rgba(255, 255, 255, 0);
-  border: 0;
-}
-
-.reviewButtons {
-  text-align: left;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-}
-.reviewButtons button {
-  border: none;
-  background: none;
-  margin-left: 15px;
-  margin-right: 10px;
-}
-
 @media only screen and (min-width: 400px) {
   .reviewList {
     flex-direction: row;
     width: 50vw;
   }
 
-  .reviewCard {
-    width: 80%;
-    margin: 10px auto;
-  }
-
-  .reviewCard img {
-    height: 200px;
-  }
 }

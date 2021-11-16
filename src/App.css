@@ -14,11 +14,6 @@ body {
   background: rgb(227, 235, 232);
 }
 /* ------------POSITION-------------- */
-.reviewList {
-  z-index: 10;
-  position: relative;
-  top: -25px;
-}
 
 .navBarMenu {
   z-index: 11;
