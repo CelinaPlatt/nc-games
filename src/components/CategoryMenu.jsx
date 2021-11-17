@@ -23,11 +23,7 @@ const CategoryMenu = ({ nav }) => {
 
       {categories.map((category) => {
         return (
-          <Link
-           className='linkItem'
-            key={category}
-            to={`/${category}/reviews`}
-          >
+          <Link className="linkItem" key={category} to={`/${category}/reviews`}>
             {category.replaceAll('-', ' ').toUpperCase()}
           </Link>
         );

@@ -1,22 +1,14 @@
 import '../styles/Profile.css';
-import { FaEdit, FaRunning } from 'react-icons/fa';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/User';
-import { useHistory, useParams } from 'react-router';
-import { UsersContext } from '../contexts/Users';
+import { useHistory } from 'react-router';
 import Avatar from '@mui/material/Avatar';
 import { red } from '@mui/material/colors';
-import { Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 
 const Profile = () => {
-  const { username } = useParams();
   const { user, setUser } = useContext(UserContext);
-  const { users, setUsers } = useContext(UsersContext);
 
   const history = useHistory();
 
@@ -29,14 +21,6 @@ const Profile = () => {
     localStorage.removeItem('loggedInUser');
     history.push('/login');
   };
-
-  const userExists = users.some((userObj) => {
-    return userObj.username === username;
-  });
-
-  // if (!userExists) {
-  //   return <p></p>
-  // }
 
   return (
     <header className="profileHeader">
@@ -51,11 +35,12 @@ const Profile = () => {
         <section className="profileCard_details">
           <h1>{user.username.toUpperCase()}</h1>
           <section className="flexContainer">
+            {/* EDIT PROFILE NAME OR AVATAR */}
             {/* <section className="button">
               <IconButton aria-label="settings">
                 <EditIcon
                   onClick={() => {
-                    handleLogOut();
+                  //  change profile for edit form
                   }}
                 />
               </IconButton>

@@ -26,12 +26,10 @@ const Login = () => {
   const { user, setUser } = useContext(UserContext);
 
   const { users } = useContext(UsersContext);
-  console.log(user, 'user in profile');
 
   const history = useHistory();
 
   const validateUserName = () => {
-    console.log('im validating username');
     setUser({
       username: '',
       name: '',
@@ -42,11 +40,11 @@ const Login = () => {
       return usernameInput === user.username;
     });
     const userMatched = userMatch[0];
+
     if (userMatched && userMatched.username) {
-      console.log('im a match');
       setUser(userMatched);
     } else {
-      console.log('im not a match');
+
       setUsernameErr(`Oops that user isn't register with us yet`);
     }
   };
@@ -75,8 +73,6 @@ const Login = () => {
     setUsernameInput('');
     setNameInput('');
   };
-
-  console.log(isLoginSuccessful, 'isLoginSuccessful');
 
   if (isLoginSuccessful) {
     localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -119,7 +115,6 @@ const Login = () => {
             placeholder="name"
             inputProps={ariaLabel}
             type="password"
-            required="true"
             id="nameInput"
             value={nameInput}
             onChange={(e) => {
@@ -128,6 +123,11 @@ const Login = () => {
             style={{ margin: 20 }}
             onFocus={resetNameErr}
           />
+          {nameErr ? (
+            <Box sx={{ width: '100%' }}>
+              <Alert severity="error">{nameErr}</Alert>
+            </Box>
+          ) : null}
         </form>
 
         <Button

@@ -20,7 +20,6 @@ const ReviewList = () => {
 
   const reviewsWithAvatar = addUserAvatarToReviews(users, reviews);
 
-
   if (username) {
     const userExists = users.some((userObj) => {
       return userObj.username === username;

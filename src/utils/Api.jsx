@@ -64,7 +64,6 @@ export const patchCommentsVotes = async (comment_id, vote) => {
   const { data } = await gamesApi.patch(`/comments/${comment_id}`, {
     inc_votes: vote,
   });
-  console.log(data.comment, '<<comment');
   return data.comment;
 };
 
@@ -73,7 +72,6 @@ export const getUsers = async () => {
     const { data } = await gamesApi.get(`/users`);
     return data.users;
   } catch (err) {
-    console.log('Oops! Something went wrong');
   }
 };
 
@@ -82,6 +80,5 @@ export const postComment = async (username, review_id, body) => {
     username: username,
     body: body,
   });
-  console.log(data.comment, '<<comment');
   return data.comment;
 };

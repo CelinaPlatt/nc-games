@@ -1,7 +1,5 @@
 import '../styles/Nav.css';
 import { Link } from 'react-router-dom';
-import CategoryMenu from './CategoryMenu';
-import Expandable from './Expandable';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/User';
 import Avatar from '@mui/material/Avatar';

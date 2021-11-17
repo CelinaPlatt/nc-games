@@ -17,7 +17,7 @@ import Typography from '@mui/material/Typography';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+// import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -38,7 +38,7 @@ const Review = ({ review }) => {
   const { review_id } = useParams();
   const [expanded, setExpanded] = useState(true);
   const { user } = useContext(UserContext);
-  const isUserOwner = user.username === review.owner;
+  // const isUserOwner = user.username === review.owner;
   let isFullPageReview = false;
 
   if (review_id) {
@@ -116,9 +116,7 @@ const Review = ({ review }) => {
           </CardContent>
           <CardActions>
             <VoteCounter votes={review.votes} review_id={review.review_id} />
-            <Link
-              to={`/reviews/${review.review_id}`}
-            >
+            <Link to={`/reviews/${review.review_id}`}>
               <Button size="small">
                 <FaCommentAlt />
                 <span className="btnSpan">{review.comment_count} </span>
@@ -147,7 +145,6 @@ const Review = ({ review }) => {
             </Collapse>
           )}
         </Card>
-        {/* </Link> */}
       </div>
     </>
   );

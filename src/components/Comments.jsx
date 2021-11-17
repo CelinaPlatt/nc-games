@@ -10,10 +10,10 @@ import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { red } from '@mui/material/colors';
-import Delete from '@mui/icons-material/Delete';
+// import Delete from '@mui/icons-material/Delete';
 
 const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
   const [err, setErr] = useState(null);

@@ -34,11 +34,8 @@ const NewComment = ({ isOpen }) => {
 
   const { user } = useContext(UserContext);
 
-  console.log(newCommentInput, '<<<input');
-  console.log(postedComments, 'postedComments');
-
   const handlePost = async (e) => {
-    console.log('submited');
+    
     e.preventDefault();
     if (newCommentInput) {
       try {

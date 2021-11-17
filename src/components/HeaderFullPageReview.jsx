@@ -6,14 +6,14 @@ import useReviewById from '../hooks/useReviewById';
 const HeaderFullPageReview = () => {
   const { review_id } = useParams();
 
-  const { review,loading,err } = useReviewById(review_id);
+  const { review, loading, err } = useReviewById(review_id);
 
-if(loading){
-  return <p>Loading</p>
-}
-if(err){
-  return <p></p>
-}
+  if (loading) {
+    return <p>Loading</p>;
+  }
+  if (err) {
+    return <p></p>;
+  }
   return (
     <header className="header">
       <h2>{review.title}</h2>

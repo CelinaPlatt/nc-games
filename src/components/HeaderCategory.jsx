@@ -5,19 +5,17 @@ import useCategoryDesc from '../hooks/useCategoryDesc';
 
 const HeaderCategory = () => {
   const { category } = useParams();
- 
-   const {categoryDesc,err,loading} =useCategoryDesc(category);
-   
+
+  const { categoryDesc, err, loading } = useCategoryDesc(category);
+
   if (loading) return <p className="loadingMsg">Loading...</p>;
   if (err) return <p></p>;
 
   return (
-  
-      <header className="header">
-        <h2>{category.replaceAll('-', ' ')}</h2>
-        <p>{categoryDesc}</p>
-      </header>
-  
+    <header className="header">
+      <h2>{category.replaceAll('-', ' ')}</h2>
+      <p>{categoryDesc}</p>
+    </header>
   );
 };
 

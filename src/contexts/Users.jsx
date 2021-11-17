@@ -6,7 +6,6 @@ export const UsersContext = createContext();
 
 export const UsersProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
-  console.log(users,"<<<users")
 //   const [err,setErr] = useState(false;)
 
   useEffect(() => {
@@ -17,7 +16,6 @@ export const UsersProvider = ({ children }) => {
         setUsers(usersFromApi);
         //   setLoadingUsers(false);
       } catch (err) {
-        console.log(err);
       }
     }
     fetchUsers();

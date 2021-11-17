@@ -13,8 +13,6 @@ export const UserProvider = ({ children }) => {
 
   let isLoggedIn = false;
 
-  console.log(user, '<<<user in App');
-
   useEffect(() => {
     const stringifiedPrevLoggedInUser = localStorage.getItem('loggedInUser');
     const prevLoggedInUser = JSON.parse(stringifiedPrevLoggedInUser);
