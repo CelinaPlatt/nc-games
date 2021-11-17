@@ -10,10 +10,15 @@ import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
-// import IconButton from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton';
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { red } from '@mui/material/colors';
-// import Delete from '@mui/icons-material/Delete';
+import Delete from '@mui/icons-material/Delete';
+import { deleteComment } from '../utils/Api';
+import { useHistory } from 'react-router';
+import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
+import { SettingsEthernetRounded } from '@mui/icons-material';
 
 const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
   const [err, setErr] = useState(null);
@@ -21,6 +26,8 @@ const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
   const [comments, setComments] = useState([]);
   const { users } = useContext(UsersContext);
   const commentsWithAvatar = addUserAvatar(users, comments);
+
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchComments() {
@@ -41,6 +48,11 @@ const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
   if (loading) return <p className="loadingMsg">Loading...</p>;
   if (err) return <p className="errMsg">{err}</p>;
 
+  const handleDelete = async (comment_id) => {
+    await deleteComment(comment_id);
+    history.push(`/reviews/${review_id}`);
+  };
+
   return (
     <div>
       {isOpen && (
@@ -49,6 +61,11 @@ const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
           {commentsWithAvatar.map((comment) => {
             return (
               <>
+                {err ? (
+                  <Box sx={{ width: '100%' }}>
+                    <Alert severity="error">{err}</Alert>
+                  </Box>
+                ) : null}
                 <Card
                   key={comment.author}
                   className="review-card"
@@ -67,18 +84,24 @@ const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
                         />
                       }
                       // >> Delete comment button
-                      // action={
-                      //   user.username === comment.author && (
-                      //     <IconButton aria-label="settings" onClick={}>
-                      //       <Delete />
-                      //     </IconButton>
-                      //   )
-                      // }
+                      action={
+                        user.username === comment.author && (
+                          <IconButton
+                            aria-label="settings"
+                            onClick={() => {
+                              handleDelete(comment.comment_id);
+                            }}
+                          >
+                            <Delete />
+                          </IconButton>
+                        )
+                      }
                       title={comment.author}
                       subheader={comment.body}
                     />
                   </Link>
                 </Card>
+
                 <div className="commentLikesBtn">
                   <VoteCounter
                     className

@@ -88,3 +88,11 @@ export const postUser = async (username, name, avatar_url) => {
   });
   return data.user;
 };
+
+export const deleteComment = async (comment_id) => {
+  try {
+    await gamesApi.delete(`/comments/${comment_id}`);
+  } catch (err) {
+    console.log('Oops! something went wrong when deleting');
+  }
+};

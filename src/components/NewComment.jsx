@@ -16,10 +16,8 @@ import Avatar from '@mui/material/Avatar';
 import { red } from '@mui/material/colors';
 import SendIcon from '@mui/icons-material/Send';
 import VoteCounter from './VoteCounter';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-
-// import TextField from '@mui/material/TextField';
+// import IconButton from '@mui/material/IconButton';
+// import DeleteIcon from '@mui/icons-material/Delete';
 
 const ariaLabel = { 'aria-label': 'description' };
 
@@ -29,13 +27,9 @@ const NewComment = ({ isOpen }) => {
   const [newCommentInput, setNewCommentInput] = useState('');
   const [postedComments, setPostedComments] = useState([]);
   const [err, setErr] = useState(false);
-  // const [loading, setLoading] = useState(false);
-  // const [isCommentFocus, setIsCommentFocus] = useState(false);
-
   const { user } = useContext(UserContext);
 
   const handlePost = async (e) => {
-    
     e.preventDefault();
     if (newCommentInput) {
       try {
@@ -127,13 +121,17 @@ const NewComment = ({ isOpen }) => {
                           src={comment.avatar_url}
                         />
                       }
-                      action={
-                        user.username === comment.author && (
-                          <IconButton aria-label="settings">
-                            <DeleteIcon />
-                          </IconButton>
-                        )
-                      }
+                      // DELET POSTED COMMENT
+                      // action={
+                      //   user.username === comment.author && (
+                      //     <IconButton
+                      //       aria-label="settings"
+                      //       onClick={() => handleDelete}
+                      //     >
+                      //       <DeleteIcon />
+                      //     </IconButton>
+                      //   )
+                      // }
                       title={comment.author}
                       subheader={comment.body}
                     />
