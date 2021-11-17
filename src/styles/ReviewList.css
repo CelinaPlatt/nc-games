@@ -26,6 +26,14 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
+.noReviewsMsg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+
 @media only screen and (min-width: 400px) {
   .reviewList {
     flex-direction: row;
