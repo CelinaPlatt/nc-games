@@ -1,18 +1,24 @@
 import { useContext } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { UsersContext } from '../contexts/Users';
 import '../styles/Login.css';
-
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import { UserContext } from '../contexts/User';
 import { useHistory } from 'react-router';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import { red } from '@mui/material/colors';
+import { Input } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 
+const ariaLabel = { 'aria-label': 'description' };
 const Login = () => {
   const [usernameInput, setUsernameInput] = useState('');
   const [nameInput, setNameInput] = useState('');
-  // const [user, setUser] = useState('');
   const [usernameErr, setUsernameErr] = useState('');
   const [nameErr, setNameErr] = useState('');
   const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
@@ -71,14 +77,6 @@ const Login = () => {
   };
 
   console.log(isLoginSuccessful, 'isLoginSuccessful');
-  // console.log(user, '<<<user');
-
-  console.log(usernameInput, '<<username');
-  console.log(nameInput, '<<name');
-
-  console.log(user, '<user in login');
-  console.log(usernameErr, 'username err');
-  console.log(nameErr, 'username err');
 
   if (isLoginSuccessful) {
     localStorage.setItem('loggedInUser', JSON.stringify(user));
@@ -86,31 +84,28 @@ const Login = () => {
   }
 
   return (
-    <div className="loginCard">
-      <form className="loginForm" onSubmit={handleSubmit}>
-        <img
-          className="loginImg"
-          src={
-            !user.username || usernameErr
-              ? '/images/pexels-cottonbro-4569857.jpg'
-              : user.avatar_url
-          }
-          alt="username"
-          onError={(e) => {
-            e.target.src = '/images/pexels-jan-kopřiva-5800065.jpg';
-          }}
+    <Card
+      style={{ margin: '50px auto', textAlign: 'center' }}
+      sx={{ maxWidth: 345 }}
+    >
+      <CardContent>
+        <Avatar
+          style={{ margin: '20px auto', width: 200, height: 200 }}
+          sx={{ bgcolor: red[500] }}
+          alt={user.username ? user.username : 'avatar'}
+          src={user.avatar_url}
         />
-        <section className="inputsBlock">
-          <label htmlFor="username">USERNAME</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            required
+        <form className="newReviewFormContainer">
+          <Input
+            className="formInput"
+            placeholder="username"
+            inputProps={ariaLabel}
+            id="usernameInput"
             value={usernameInput}
             onChange={(e) => {
               setUsernameInput(e.target.value);
             }}
+            style={{ margin: 20 }}
             onBlur={validateUserName}
             onFocus={resetUserNameErr}
           />
@@ -119,35 +114,43 @@ const Login = () => {
               <Alert severity="error">{usernameErr}</Alert>
             </Box>
           ) : null}
-          <label htmlFor="name">NAME</label>
-          <input
+          <Input
+            className="formInput"
+            placeholder="name"
+            inputProps={ariaLabel}
             type="password"
-            name="name"
-            id="name"
-            required
+            required="true"
+            id="nameInput"
             value={nameInput}
             onChange={(e) => {
               setNameInput(e.target.value);
             }}
+            style={{ margin: 20 }}
             onFocus={resetNameErr}
           />
-          {nameErr ? (
-            <Box sx={{ width: '100%' }}>
-              <Alert severity="error">{nameErr}</Alert>
-            </Box>
-          ) : null}
-        </section>
-        <button className="loginBtn">Log In</button>
-        <hr className="divisionLine" />
+        </form>
+
+        <Button
+          variant="outlined"
+          onClick={handleSubmit}
+          style={{ margin: '20px 0' }}
+        >
+          Log in <LoginIcon className="btnSpan" />
+        </Button>
+
         <p>Don't have a username yet?</p>
 
-        <Link to="/register">
-          <button className="registerBtn">
-            Register
-          </button>
-        </Link>
-      </form>
-    </div>
+        <Button
+          style={{ margin: '30px 0' }}
+          variant="outlined"
+          onClick={() => {
+            history.push('/register');
+          }}
+        >
+          Register <AssignmentIndIcon className="btnSpan" />
+        </Button>
+      </CardContent>
+    </Card>
   );
 };
 
