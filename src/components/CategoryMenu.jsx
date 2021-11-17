@@ -15,7 +15,8 @@ const CategoryMenu = ({ nav }) => {
       <ArrowForwardIosIcon
         sx={{ fontSize: 40 }}
         style={{
-          color: '#BC7D34',
+          zIndex:'-1',
+          color: '#ba9468',
           width: '100vw',
           transform: 'rotate(-90deg)',
         }}
@@ -32,7 +33,8 @@ const CategoryMenu = ({ nav }) => {
       <ArrowForwardIosIcon
         sx={{ fontSize: 40 }}
         style={{
-          color: '#BC7D34',
+          zIndex:'-1',
+          color: '#ba9468',
           width: '100vw',
           transform: 'rotate(90deg)',
         }}
