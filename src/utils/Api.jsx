@@ -68,11 +68,8 @@ export const patchCommentsVotes = async (comment_id, vote) => {
 };
 
 export const getUsers = async () => {
-  try {
-    const { data } = await gamesApi.get(`/users`);
-    return data.users;
-  } catch (err) {
-  }
+  const { data } = await gamesApi.get(`/users`);
+  return data.users;
 };
 
 export const postComment = async (username, review_id, body) => {
@@ -81,4 +78,13 @@ export const postComment = async (username, review_id, body) => {
     body: body,
   });
   return data.comment;
+};
+
+export const postUser = async (username, name, avatar_url) => {
+  const { data } = await gamesApi.post(`/users`, {
+    username: username,
+    name: name,
+    avatar_url: avatar_url,
+  });
+  return data.user;
 };
