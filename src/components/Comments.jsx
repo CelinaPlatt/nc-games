@@ -18,7 +18,6 @@ import { deleteComment } from '../utils/Api';
 import { useHistory } from 'react-router';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import { SettingsEthernetRounded } from '@mui/icons-material';
 
 const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
   const [err, setErr] = useState(null);

@@ -6,7 +6,6 @@ import { addUserAvatarToReviews } from '../utils/DataManipulation';
 import { useContext } from 'react';
 import { UsersContext } from '../contexts/Users';
 import { UserContext } from '../contexts/User';
-import HomeGallery from './HomeGallery';
 
 const ReviewList = () => {
   const { category, username, review_id } = useParams();
