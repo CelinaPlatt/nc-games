@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import { postComment } from '../utils/Api';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
