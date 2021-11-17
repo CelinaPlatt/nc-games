@@ -13,13 +13,13 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { UserProvider } from './contexts/User';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
+import HomeGallery from './components/HomeGallery';
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#BC7D34',
-      contrastText:'black',
+      contrastText: 'black',
     },
     secondary: {
       main: '#52282f',
@@ -37,7 +37,7 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <CategoryMenu />
-                {/*      HomeGallery */}
+                <HomeGallery />
               </Route>
 
               <Route exact path="/:username/profile">
@@ -86,7 +86,7 @@ function App() {
           </BrowserRouter>
         </UsersProvider>
       </UserProvider>
-      </ThemeProvider>
+    </ThemeProvider>
   );
 }
 

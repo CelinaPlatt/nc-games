@@ -21,9 +21,9 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  background-color: rgb(227, 222, 207);
+  background-color: #ffffff79;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 25px;
+  border-radius: 180px;
   padding: 20px;
 }
 .profileCard_details{
@@ -44,7 +44,7 @@
 
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 900px) {
   .profileCard {
     flex-direction: row;
     justify-content: center;

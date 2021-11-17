@@ -2,8 +2,9 @@ import '../styles/CategoryMenu.css';
 import { Link } from 'react-router-dom';
 import useCategories from '../hooks/useCategories';
 
-const CategoryMenu = ({ nav }) => {
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
+const CategoryMenu = ({ nav }) => {
   const { categories, err, loading } = useCategories();
 
   if (loading) return <p className="loadingMsg">Loading...</p>;
@@ -11,13 +12,35 @@ const CategoryMenu = ({ nav }) => {
 
   return (
     <section className={nav ? 'navBarMenu' : 'categoriesMenu'}>
+      <ArrowForwardIosIcon
+        sx={{ fontSize: 40 }}
+        style={{
+          color: '#BC7D34',
+          width: '100vw',
+          transform: 'rotate(-90deg)',
+        }}
+      />
+
       {categories.map((category) => {
         return (
-          <Link key={category} to={`/${category}/reviews`}>
-            {category.replaceAll('-', ' ')}
+          <Link
+           className='linkItem'
+            key={category}
+            to={`/${category}/reviews`}
+          >
+            {category.replaceAll('-', ' ').toUpperCase()}
           </Link>
         );
       })}
+
+      <ArrowForwardIosIcon
+        sx={{ fontSize: 40 }}
+        style={{
+          color: '#BC7D34',
+          width: '100vw',
+          transform: 'rotate(90deg)',
+        }}
+      />
     </section>
   );
 };

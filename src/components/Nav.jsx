@@ -14,10 +14,7 @@ const Nav = () => {
   
   return (
     <nav className="nav">
-      <Expandable>
-        <CategoryMenu nav={true} />
-      </Expandable>
-      <Link to="/">HOME</Link>
+      <Link id='homeLink' to="/">HOME</Link>
       
       <Link to={!username ? '/login':`/${username}/profile` }>
       <Avatar
