@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Game Critic 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Visit the site [hosted on Netlify](https://game-critic.netlify.app/)
 
-In the project directory, you can run:
+&ensp; 
+## Project Summary
 
+A frondend web application integrated with a [backend API](https://github.com/CelinaPlatt/games-api) using asynchronous JavaScript as part of a three-tier web application  architecture. Users can log in, read reviews and write comments.
+
+&ensp; 
+## How to run it locally
+&ensp; 
+### Clone
+
+```
+$ git clone https://github.com/CelinaPlatt/nc-games.git
+```
+```
+$ cd nc-games
+```
+&ensp; 
+### Install dependencies
+
+All necessary dependencies are added in the package.json. To install simply type on the command line the following:
+
+
+```
+ $ npm install
+```
+
+&ensp; 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the browser on localhost.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+&ensp;
+### User Stories
+As a guest I can:
 
-### `npm test`
+- Read reviews organised by categories without having to login.
+- Click on a user to see all the reviews on their profile.
+- Register a new account.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As a user I can:
 
-### `npm run build`
+- Login using my username and name.
+- Log out.
+- See my profile page where all my reviews are displayed.
+- Click on a review card to read the full review and see the comments.
+- Post a comment on a review.
+- Delete one of my comments.
+- Like a review.
+- Like a comment.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+&ensp;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](./public/design/__gallery.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
