@@ -44,7 +44,6 @@ const Login = () => {
     if (userMatched && userMatched.username) {
       setUser(userMatched);
     } else {
-
       setUsernameErr(`Oops that user isn't register with us yet`);
     }
   };
@@ -59,6 +58,16 @@ const Login = () => {
     if (usernameErr) {
       setNameErr('');
     }
+  };
+
+  const handleGuestLogin = () => {
+    setUser({
+      username: 'happyamy2016',
+      name: 'Amy Happy',
+      avatar_url:
+        'https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729',
+    });
+    setIsLoginSuccessful(true);
   };
 
   const handleSubmit = (e) => {
@@ -139,6 +148,14 @@ const Login = () => {
         </Button>
 
         <p>Don't have a username yet?</p>
+
+        <Button
+          style={{ margin: '30px 0', color:'red' }}
+          variant="outlined"
+          onClick={handleGuestLogin}
+        >
+          Log in as happyamy2016 <LoginIcon className="btnSpan" />
+        </Button>
 
         <Button
           style={{ margin: '30px 0' }}
