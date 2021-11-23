@@ -7,7 +7,9 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const CategoryMenu = ({ nav }) => {
   const { categories, err, loading } = useCategories();
 
-  if (loading) return <p className="loadingMsg">Loading...</p>;
+  if (loading)
+    return  <img className="loadingGif" src="/images/loading.gif" alt="Loading ..." />;
+
   if (err) return <p className="errMsg">{err}</p>;
 
   return (
@@ -15,7 +17,7 @@ const CategoryMenu = ({ nav }) => {
       <ArrowForwardIosIcon
         sx={{ fontSize: 40 }}
         style={{
-          zIndex:'-1',
+          zIndex: '-1',
           color: '#ba9468',
           width: '100vw',
           transform: 'rotate(-90deg)',
@@ -29,11 +31,10 @@ const CategoryMenu = ({ nav }) => {
           </Link>
         );
       })}
-
       <ArrowForwardIosIcon
         sx={{ fontSize: 40 }}
         style={{
-          zIndex:'-1',
+          zIndex: '-1',
           color: '#ba9468',
           width: '100vw',
           transform: 'rotate(90deg)',

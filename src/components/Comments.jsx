@@ -44,7 +44,7 @@ const Comments = ({ isOpen, review_id, isFullPageReview, user }) => {
     fetchComments();
   }, [review_id]);
 
-  if (loading) return <p className="loadingMsg">Loading...</p>;
+  if (loading) return <img className="loadingGif" src="/images/loading.gif" alt="Loading ..." />;
   if (err) return <p className="errMsg">{err}</p>;
 
   const handleDelete = async (comment_id) => {

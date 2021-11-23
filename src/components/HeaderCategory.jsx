@@ -8,7 +8,7 @@ const HeaderCategory = () => {
 
   const { categoryDesc, err, loading } = useCategoryDesc(category);
 
-  if (loading) return <p className="loadingMsg">Loading...</p>;
+  if (loading) return <img className="loadingGif" src="/images/loading.gif" alt="Loading ..." />;
   if (err) return <p></p>;
 
   return (

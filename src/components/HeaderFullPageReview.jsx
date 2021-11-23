@@ -9,7 +9,7 @@ const HeaderFullPageReview = () => {
   const { review, loading, err } = useReviewById(review_id);
 
   if (loading) {
-    return <p>Loading</p>;
+    return <img className="loadingGif" src="/images/loading.gif" alt="Loading ..." />;
   }
   if (err) {
     return <p></p>;
